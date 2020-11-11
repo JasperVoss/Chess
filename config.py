@@ -13,12 +13,17 @@ def magnet_off():
     gpio.output(magnet_pin, 0)
 
 magnet_off()
+
 r = [0, 0, 0, 0]
 while True:
 	inputtext = input("m = manual, move = move, enter to break")
 	if inputtext == "m":
 		move.manual(int(input("motor: ")), int(input("steps: ")))
+	elif inputtext == "on":
+		magnet_on()
 	elif inputtext == "off":
+		magnet_off()
+	elif inputtext == "motors off":
 		for i in range(4):
 			move.off(i)
 	elif inputtext == "move":
