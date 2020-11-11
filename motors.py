@@ -1,4 +1,4 @@
-Simport time
+import time
 import math
 from PEC import MCP
 
