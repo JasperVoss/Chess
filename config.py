@@ -20,7 +20,7 @@ while True:
 		move.manual(int(input("motor: ")), int(input("steps: ")))
 	elif inputtext == "move":
 		if r[0] == 0:
-			r = get_steps([int(input("current x: ")), int(input("current y: "))])
-		move.move(r, [int(input("final x: ")), int(input("final y: "))])
+			r = move.get_steps([int(input("current x: ")), int(input("current y: "))])
+		r = move.move(r, [int(input("final x: ")), int(input("final y: "))])[1]
 	elif inputtext == "":
 		break
