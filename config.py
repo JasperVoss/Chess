@@ -18,6 +18,9 @@ while True:
 	inputtext = input("m = manual, move = move, enter to break")
 	if inputtext == "m":
 		move.manual(int(input("motor: ")), int(input("steps: ")))
+	elif inputtext == "off":
+		for i in range(4):
+			move.off(i)
 	elif inputtext == "move":
 		if r[0] == 0:
 			r = move.get_radii([int(input("current x: ")), int(input("current y: "))])

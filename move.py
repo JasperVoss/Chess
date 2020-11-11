@@ -57,8 +57,7 @@ def move(radii, end):
         elif s[0] == 'B1':
             b_motors.move_step1(s[1])
         #time.sleep(.0002)
-    for i in range(4):
-        off(i)
+
     return steps[1]
 
 def plotSteps(radii, endCoords, numBreaks):
