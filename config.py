@@ -25,8 +25,8 @@ while True:
 		move.manual(0, -2000)
 		r = move.move(move.get_radii([16, 16]), [100, 100])
 		move.manual(0, 4)
-		move.manual(1, -15)
-		move.manual(2, -2)
+		move.manual(1, -18)
+		move.manual(2, 0)
 		move.manual(3, 8)
 	elif inputtext == "on":
 		magnet_on()
