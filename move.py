@@ -52,10 +52,11 @@ def manual(motor, steps):
 def move(radii, end):
     current = 0
     steps = plotSteps(radii, end)
-    print(steps)
-    
-    for s in steps:
+    print(steps[0])
+
+    for s in steps[0]:
         if s[0] != 0:
+            print(s[0], type(s[0]))
             a_motors.move_step0(s[0])
         if s[1] != 0:
             a_motors.move_step1(s[1])
