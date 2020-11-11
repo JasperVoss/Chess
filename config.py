@@ -17,7 +17,7 @@ r = [0, 0, 0, 0]
 while True:
 	inputtext = input("m = manual, move = move, enter to break")
 	if inputtext == "m":
-		move.manual(input("motor: "), input("steps: "))
+		move.manual(int(input("motor: ")), int(input("steps: ")))
 	elif inputtext == "move":
 		if r[0] == 0:
 			r = get_steps([int(input("current x: ")), int(input("current y: "))])
