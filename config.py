@@ -21,6 +21,6 @@ while True:
 	elif inputtext == "move":
 		if r[0] == 0:
 			r = move.get_steps([int(input("current x: ")), int(input("current y: "))])
-		r = move.move(r, [int(input("final x: ")), int(input("final y: "))])[1]
+		r = move.move(r, [int(input("final x: ")), int(input("final y: "))])
 	elif inputtext == "":
 		break

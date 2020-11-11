@@ -51,21 +51,24 @@ def manual(motor, steps):
     
 def move(radii, end):
     current = 0
-    steps = plotSteps(radii, end, 1000)
-    for s in steps[0]:
-        if s[0] == 'A0':
-            a_motors.move_step0(s[1])
-        elif s[0] == 'A1':
+    steps = plotSteps(radii, end)
+    print(steps)
+    
+    for s in steps:
+        if s[0] != 0:
+            a_motors.move_step0(s[0])
+        if s[1] != 0:
             a_motors.move_step1(s[1])
-        elif s[0] == 'B0':
-            b_motors.move_step0(s[1])
-        elif s[0] == 'B1':
-            b_motors.move_step1(s[1])
+        if s[2] != 0:
+            b_motors.move_step0(s[2])
+        if s[3] != 0:
+            b_motors.move_step1(s[3])
+
     for i in range(0, 4):
         off(i)
     return steps[1]
 
-def plotSteps(steps, endCoords, numBreaks):
+def plotSteps(steps, endCoords):
     plot = []
     targets = []
 
