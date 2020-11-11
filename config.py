@@ -19,6 +19,11 @@ while True:
 	inputtext = input("m = manual, move = move, enter to break")
 	if inputtext == "m":
 		move.manual(int(input("motor: ")), int(input("steps: ")))
+	elif inputtext == "calibrate":
+		for i in range(4):
+			move.off(i)
+		move.manual(0, -2000)
+		r = move.move([20, 20], [100, 100])
 	elif inputtext == "on":
 		magnet_on()
 	elif inputtext == "off":
