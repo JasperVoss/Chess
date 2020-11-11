@@ -32,6 +32,7 @@ def off(motor):
     if motor == 3:
         b_motors.off1()
 def manual(motor, steps):
+    print(motor, steps)
     if motor == 0:
         for i in range(abs(steps)):
             a_motors.move_step0(abs(steps)/steps)
