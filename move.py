@@ -1,4 +1,4 @@
-import math, motorClass, time
+import math, motors, time
 
 mm_per_step_0 = .263
 mm_per_step_1 = .265
@@ -8,8 +8,8 @@ mm_per_step_3 = .262
 boardWidth = 616
 boardHeight = 493
 
-a_motors = motorClass.Motor('A')
-b_motors = motorClass.Motor('B')
+a_motors = motors.Motor('A')
+b_motors = motors.Motor('B')
 
 def distance(point1, point2):
     return math.sqrt((point1[0]-point2[0])**2+(point1[1]-point2[1])**2)
