@@ -3,7 +3,7 @@ import math, motors, time
 mm_per_step_0 = .2652
 mm_per_step_1 = .2643
 mm_per_step_2 = .2673
-mm_per_step_3 = .2665
+mm_per_step_3 = .2675
 
 boardWidth = 616
 boardHeight = 493
