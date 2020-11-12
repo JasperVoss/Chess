@@ -15,7 +15,7 @@ magnet_off()
 
 r = move.get_radii([300, 200])
 
-for i in range(5):
+for i in range(2):
 	magnet_on()
 	r = move.move(r, [300, 300])
 	magnet_off()
