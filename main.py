@@ -1,5 +1,5 @@
 import RPi.GPIO as gpio
-
+import move
 magnet_pin = 4
 
 gpio.setmode(gpio.BCM)
