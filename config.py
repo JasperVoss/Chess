@@ -12,7 +12,7 @@ def magnet_on():
 def magnet_off():
     gpio.output(magnet_pin, 0)
 
- def get_radii(pos):
+def get_radii(pos):
     return [
     round(distance([0, 0], pos)/move.mm_per_step_0),
     round(distance([0, boardHeight], pos)/move.mm_per_step_1),
@@ -46,7 +46,7 @@ while True:
 	elif inputtext == "move":
 		if move.get_steps()[0] == "":
 			move.save_steps(get_radii([input("current x: "), input("current y: ")]))
-			
-		r = move.move([round(input("final x: ")), round(input("final y: "))])
+
+		move.move([round(input("final x: ")), round(input("final y: "))])
 	elif inputtext == "":
 		break
