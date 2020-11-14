@@ -65,6 +65,16 @@ def manual(motor, steps):
             b_motors.move_step1(abs(steps)/steps)
             time.sleep(.002)
 
+def off(motor):
+    if motor == 0:
+        a_motors.off0()
+    if motor == 1:
+        a_motors.off1()
+    if motor == 2:
+        b_motors.off0()
+    if motor == 3:
+        b_motors.off1()
+        
 def move(coords):
 	steps = get_steps()
 	print(steps)
