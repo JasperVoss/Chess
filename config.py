@@ -44,7 +44,7 @@ while True:
 		for i in range(4):
 			move.off(i)
 	elif inputtext == "move":
-		if move.get_steps()[0] == "":
+		if move.get_steps()[0] == 0:
 			move.save_steps(get_radii([input("current x: "), input("current y: ")]))
 
 		move.move([round(input("final x: ")), round(input("final y: "))])
