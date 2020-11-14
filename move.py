@@ -35,7 +35,6 @@ def get_steps():
 			steps[index] = steps[index] + s
 
 	step_file.close()
-	print(steps)
 	for i in range(4):
 		steps[i] = int(steps[i])
 
@@ -77,7 +76,6 @@ def off(motor):
 
 def move(coords):
 	steps = get_steps()
-	print(steps)
 	final = [
 	round(distance([0, 0], coords)/mm_per_step_0), 
 	round(distance([0, height], coords)/mm_per_step_1), 
@@ -90,9 +88,6 @@ def move(coords):
 
 	dx = coords[0]-x0
 	dy = coords[1]-y0
-
-	print(x0, y0)
-	print(dx, dy)
 
 	dsteps = [final[i]-steps[i] for i in range(4)]   #change in steps
 
@@ -111,23 +106,17 @@ def move(coords):
 			round(x0+dx*i/num_targets, 2),
 			round(y0+dy*i/num_targets, 2)
 			])
-	print(target_coords)
-	print('\n\n\n')
-
 	target_steps = []
 	for t in target_coords:
 		target_steps.append(get_radii(t))
 	target_steps.append(final)
 
-	print(target_steps)
 
 	for t in target_steps:
 		d0 = t[0]-steps[0]
 		d1 = t[1]-steps[1]
 		d2 = t[2]-steps[2]
 		d3 = t[3]-steps[3]
-
-		print(d0, d1, d2, d3)
 
 		for i in range(abs(d0)):
 			a_motors.move_step0(abs(d0)/d0)
