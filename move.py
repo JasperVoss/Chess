@@ -91,7 +91,7 @@ def move(coords):
 	dx = coords[0]-x0
 	dy = coords[1]-y0
 
-	print(x0 y0)
+	print(x0, y0)
 	print(dx, dy)
 
 	dsteps = [final[i]-steps[i] for i in range(4)]   #change in steps
