@@ -145,7 +145,5 @@ def move(coords):
 			b_motors.move_step1(abs(d3)/d3)
 			steps[3] += int(abs(d3)/d3)
 			time.sleep(.002)
-	y0 = ((steps[0]*mm_per_step_0)**2-(steps[1]*mm_per_step_1)**2+height**2)/2/height
-	x0 = math.sqrt((mm_per_step_0*steps[0])**2-y0**2)
-	print(x0, y0)
+
 	save_steps(steps)
