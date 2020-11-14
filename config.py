@@ -2,6 +2,8 @@ import RPi.GPIO as gpio
 import move, time
 
 magnet_pin = 4
+height = 616
+width = 492
 
 gpio.setmode(gpio.BCM)
 gpio.setup(magnet_pin, gpio.OUT)
@@ -15,9 +17,9 @@ def magnet_off():
 def get_radii(pos):
     return [
     round(move.distance([0, 0], pos)/move.mm_per_step_0),
-    round(move.distance([0, boardHeight], pos)/move.mm_per_step_1),
-    round(move.distance([boardWidth, boardHeight], pos)/move.mm_per_step_2),
-    round(move.distance([boardWidth, 0], pos)/mm_per_step_3)
+    round(move.distance([0, height], pos)/move.mm_per_step_1),
+    round(move.distance([width, height], pos)/move.mm_per_step_2),
+    round(move.distance([width, 0], pos)/mm_per_step_3)
     ]
 
 magnet_off()
