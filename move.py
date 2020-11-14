@@ -50,19 +50,19 @@ def manual(motor, steps):
     if motor == 0:
         for i in range(abs(steps)):
             a_motors.move_step0(abs(steps)/steps)
-            time.sleep(.002)
+            #time.sleep(.002)
     if motor == 1:
         for i in range(abs(steps)):
             a_motors.move_step1(abs(steps)/steps)
-            time.sleep(.002)
+            #time.sleep(.002)
     if motor == 2:
         for i in range(abs(steps)):
             b_motors.move_step0(abs(steps)/steps)   #was -abs
-            time.sleep(.002)
+            #time.sleep(.002)
     if motor == 3:
         for i in range(abs(steps)):
             b_motors.move_step1(abs(steps)/steps)
-            time.sleep(.002)
+            #time.sleep(.002)
 
 def off(motor):
     if motor == 0:
