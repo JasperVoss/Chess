@@ -1,12 +1,12 @@
-import math, time
+import math, time, motors
 
 mm_per_step_0 = .2652
 mm_per_step_1 = .2643
 mm_per_step_2 = .268
 mm_per_step_3 = .267
 
-# a_motors = motors.Motor('A')
-# b_motors = motors.Motor('B')
+a_motors = motors.Motor('A')
+b_motors = motors.Motor('B')
 
 height = 492
 width = 616
@@ -50,19 +50,19 @@ def save_steps(steps):
 def manual(motor, steps):
     if motor == 0:
         for i in range(abs(steps)):
-            #a_motors.move_step0(abs(steps)/steps)
+            a_motors.move_step0(abs(steps)/steps)
             time.sleep(.002)
     if motor == 1:
         for i in range(abs(steps)):
-            #a_motors.move_step1(abs(steps)/steps)
+            a_motors.move_step1(abs(steps)/steps)
             time.sleep(.002)
     if motor == 2:
         for i in range(abs(steps)):
-            #b_motors.move_step0(abs(steps)/steps)   #was -abs
+            b_motors.move_step0(abs(steps)/steps)   #was -abs
             time.sleep(.002)
     if motor == 3:
         for i in range(abs(steps)):
-            #b_motors.move_step1(abs(steps)/steps)
+            b_motors.move_step1(abs(steps)/steps)
             time.sleep(.002)
 
 def off(motor):
@@ -127,22 +127,19 @@ def move(coords):
 		print(d0, d1, d2, d3)
 
 		for i in range(abs(d0)):
-			#a_motors.move_step0(abs(d0)/d0)
+			a_motors.move_step0(abs(d0)/d0)
 			steps[0] += int(abs(d0)/d0)
 			time.sleep(.002)
 		for i in range(abs(d1)):
-			#a_motors.move_step1(abs(d1)/d1)
+			a_motors.move_step1(abs(d1)/d1)
 			steps[1] += int(abs(d1)/d1)
 			time.sleep(.002)
 		for i in range(abs(d2)):
-			#b_motors.move_step0(abs(d2)/d2)
+			b_motors.move_step0(abs(d2)/d2)
 			steps[2] += int(abs(d2)/d2)
 			time.sleep(.002)
 		for i in range(abs(d3)):
-			#b_motors.move_step1(abs(d3)/d3)
+			b_motors.move_step1(abs(d3)/d3)
 			steps[3] += int(abs(d3)/d3)
 			time.sleep(.002)
 	save_steps(steps)
-
-save_steps(get_radii([100, 100]))
-move([0, 0])
