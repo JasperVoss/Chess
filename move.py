@@ -98,6 +98,7 @@ def move(coords):
 		d2 = abs(t[2]-steps[2])
 		d3 = abs(t[3]-steps[3])
 
+		print(d0, type(d0))
 		for i in range(abs(d0)):
 			a_motors.move_step0(abs(d0)/d0)
 			steps[0] += abs(d0)/d0
