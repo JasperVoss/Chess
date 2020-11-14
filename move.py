@@ -64,9 +64,9 @@ def move(coords):
 
 	for i in range(num_targets):
 		targets.append([
-			round(steps[0]+dsteps[0]*i/num_targets)
-			round(steps[1]+dsteps[1]*i/num_targets)
-			round(steps[2]+dsteps[2]*i/num_targets)
+			round(steps[0]+dsteps[0]*i/num_targets),
+			round(steps[1]+dsteps[1]*i/num_targets),
+			round(steps[2]+dsteps[2]*i/num_targets),
 			round(steps[3]+dsteps[3]*i/num_targets)
 			])
 	targets.append(final)
