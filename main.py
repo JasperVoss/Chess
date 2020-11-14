@@ -13,7 +13,7 @@ def magnet_off():
 
 magnet_off()
 
-r = move.get_radii([300, 200])
+r = move.get_radii([400, 300])
 d = int(input("distance?: "))
 
 for i in range(2):
@@ -34,4 +34,4 @@ for i in range(2):
 	magnet_off()
 	r = move.move(r, [300, 250-d])
 
-move.move(r, [300, 200])
+move.move(r, [400, 300])
