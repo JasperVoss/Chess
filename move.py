@@ -15,6 +15,13 @@ tension = True
 def distance(point1, point2):
     return math.sqrt((point1[0]-point2[0])**2+(point1[1]-point2[1])**2)
 
+def get_radii(pos):
+    return [
+    round(move.distance([0, 0], pos)/move.mm_per_step_0),
+    round(move.distance([0, height], pos)/move.mm_per_step_1),
+    round(move.distance([width, height], pos)/move.mm_per_step_2),
+    round(move.distance([width, 0], pos)/mm_per_step_3)
+    ]
 
 def get_steps():
 	step_file = open("steps.txt", "r")
@@ -68,6 +75,12 @@ def move(coords):
 	round(distance([width, 0], coords)/mm_per_step_3), 
 	]
 
+	y0 = ((steps[0]**2)*mm_per_step_0-(steps[1]**2)*mm_per_step_1+height**2)/2/height
+	x0 = math.sqrt(mm_per_step_0*steps[0]**2-y0**2)
+
+	dx = x0-coords[0]
+	dy = y0-coords[1]
+
 	dsteps = [final[i]-steps[i] for i in range(4)]   #change in steps
 
 	most_steps_motor = 0
@@ -78,21 +91,20 @@ def move(coords):
 			most_steps_motor = i
 
 	num_targets = most_steps
-	targets = []
+	target_coords = []
 
 	for i in range(num_targets):
-		targets.append([
-			round(steps[0]+dsteps[0]*i/num_targets),
-			round(steps[1]+dsteps[1]*i/num_targets),
-			round(steps[2]+dsteps[2]*i/num_targets),
-			round(steps[3]+dsteps[3]*i/num_targets)
+		target_coords.append([
+			x0+dx*i/num_targets,
+			y0+dy*i/num_targets
 			])
-	targets.append(final)
 
-	# for i in range(len(targets)):
-	# 	targets[i] = tension(targets[i])
+	target_steps = []
+	for t in target_coords:
+		target_steps.append(get_radii(t))
+	target_steps.append(final)
 
-	for t in targets:
+	for t in target_steps:
 		d0 = abs(t[0]-steps[0])
 		d1 = abs(t[1]-steps[1])
 		d2 = abs(t[2]-steps[2])
