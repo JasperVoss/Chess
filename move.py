@@ -40,6 +40,24 @@ def save_steps(steps):
 		step_file.write(str(s)+"\n")
 	step_file.close()
 
+def manual(motor, steps):
+    if motor == 0:
+        for i in range(abs(steps)):
+            a_motors.move_step0(abs(steps)/steps)
+            time.sleep(.002)
+    if motor == 1:
+        for i in range(abs(steps)):
+            a_motors.move_step1(abs(steps)/steps)
+            time.sleep(.002)
+    if motor == 2:
+        for i in range(abs(steps)):
+            b_motors.move_step0(abs(steps)/steps)   #was -abs
+            time.sleep(.002)
+    if motor == 3:
+        for i in range(abs(steps)):
+            b_motors.move_step1(abs(steps)/steps)
+            time.sleep(.002)
+
 def move(coords):
 	steps = get_steps()
 	print(steps)
