@@ -1,5 +1,5 @@
 import RPi.GPIO as gpio
-import move
+import move, time
 magnet_pin = 4
 
 gpio.setmode(gpio.BCM)
@@ -22,7 +22,7 @@ while True:
 	time.sleep(.5)
 	move.move([100, 400])
 	time.sleep(.5)
-	
+
 # r = move.get_radii([400, 300])
 # d = int(input("distance?: "))
 
