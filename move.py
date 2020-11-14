@@ -1,15 +1,15 @@
 import math, time
 
-mm_per_step_0 = 1
-mm_per_step_1 = 1
-mm_per_step_2 = 1
-mm_per_step_3 = 1
+mm_per_step_0 = .2652
+mm_per_step_1 = .2643
+mm_per_step_2 = .268
+mm_per_step_3 = .267
 
 # a_motors = motors.Motor('A')
 # b_motors = motors.Motor('B')
 
-height = 100
-width = 100
+height = 492
+width = 616
 tension = True
 
 def distance(point1, point2):
