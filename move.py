@@ -28,7 +28,7 @@ def get_steps():
 			steps[index] = steps[index] + s
 
 	step_file.close()
-
+	print(steps)
 	for i in range(4):
 		steps[i] = int(steps[i])
 
