@@ -17,10 +17,10 @@ def distance(point1, point2):
 
 def get_radii(pos):
     return [
-    round(move.distance([0, 0], pos)/move.mm_per_step_0),
-    round(move.distance([0, height], pos)/move.mm_per_step_1),
-    round(move.distance([width, height], pos)/move.mm_per_step_2),
-    round(move.distance([width, 0], pos)/mm_per_step_3)
+    round(distance([0, 0], pos)/mm_per_step_0),
+    round(distance([0, height], pos)/mm_per_step_1),
+    round(distance([width, height], pos)/mm_per_step_2),
+    round(distance([width, 0], pos)/mm_per_step_3)
     ]
 
 def get_steps():
