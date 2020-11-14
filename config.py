@@ -55,6 +55,6 @@ while True:
 		if move.get_steps()[0] == 0:
 			move.save_steps(get_radii([int(input("current x: ")), int(input("current y: "))]))
 
-		move.move([round(input("final x: ")), round(input("final y: "))])
+		move.move([int(input("final x: ")), int(input("final y: "))])
 	elif inputtext == "":
 		break
