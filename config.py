@@ -14,10 +14,10 @@ def magnet_off():
 
 def get_radii(pos):
     return [
-    round(distance([0, 0], pos)/move.mm_per_step_0),
-    round(distance([0, boardHeight], pos)/move.mm_per_step_1),
-    round(distance([boardWidth, boardHeight], pos)/move.mm_per_step_2),
-    round(distance([boardWidth, 0], pos)/mm_per_step_3)
+    round(move.distance([0, 0], pos)/move.mm_per_step_0),
+    round(move.distance([0, boardHeight], pos)/move.mm_per_step_1),
+    round(move.distance([boardWidth, boardHeight], pos)/move.mm_per_step_2),
+    round(move.distance([boardWidth, 0], pos)/mm_per_step_3)
     ]
 
 magnet_off()
