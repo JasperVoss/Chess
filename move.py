@@ -22,7 +22,8 @@ def get_curr_step():
 
     return steps
 
-def save_curr_steps(steps):
+def save_curr_steps():
+	steps = [a_motors.get_steps[0], a_motors.get_steps[1], b_motors.get_steps[0], b_motors.get_steps[1]]
     file = open("curr_steps.txt", "w")
     for s in steps:
         step_file.write(str(s)+"\n")
@@ -91,6 +92,7 @@ def manual(motor, steps):
         for i in range(abs(steps)):
             b_motors.move_step1(abs(steps)/steps)
             time.sleep(.002)
+    save_curr_steps()
 
 def off(motor):
     if motor == 0:
@@ -164,4 +166,4 @@ def move(coords):
 			#time.sleep(.002)
 
 	save_steps(steps)
-	save_curr_steps([a_motors.get_steps[0], a_motors.get_steps[1], b_motors.get_steps[0], b_motors.get_steps[1]])
+	save_curr_steps()
