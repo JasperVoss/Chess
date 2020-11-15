@@ -34,8 +34,8 @@ a_motors = motors.Motor('A')
 b_motors = motors.Motor('B')
 
 current_step = get_curr_step()
-a_motors.set_curr_step([current_step[0], current_step[1]])
-b_motors.set_curr_step([current_step[2], current_step[3]])
+a_motors.set_curr_step(current_step[0], current_step[1])
+b_motors.set_curr_step(current_step[2], current_step[3])
 
 height = 492
 width = 616
