@@ -1,9 +1,9 @@
 import math, time, motors
 
-mm_per_step_0 = .2657
-mm_per_step_1 = .266
-mm_per_step_2 = .2671
-mm_per_step_3 = .2654
+mm_per_step_0 = .266
+mm_per_step_1 = .2664
+mm_per_step_2 = .2673
+mm_per_step_3 = .2658
 
 def get_curr_step():
     file = open("curr_steps.txt", "r")
