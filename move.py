@@ -1,7 +1,7 @@
 import math, time, motors
 
 mm_per_step_0 = .266
-mm_per_step_1 = .2664
+mm_per_step_1 = .2668
 mm_per_step_2 = .2673
 mm_per_step_3 = .2658
 
