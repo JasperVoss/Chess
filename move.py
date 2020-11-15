@@ -5,8 +5,36 @@ mm_per_step_1 = .2643
 mm_per_step_2 = .268
 mm_per_step_3 = .267
 
+def get_curr_step():
+    file = open("curr_steps.txt", "r")
+    steps = ["", "", "", ""]
+    index = 0
+
+    for s in file.read():
+        if s == "\n":
+            index += 1
+        else:
+            steps[index] = steps[index] + s
+
+    file.close()
+    for i in range(4):
+        steps[i] = int(steps[i])
+
+    return steps
+
+def save_curr_steps(steps):
+    file = open("curr_steps.txt", "w")
+    for s in steps:
+        step_file.write(str(s)+"\n")
+    file.close()
+
+
 a_motors = motors.Motor('A')
 b_motors = motors.Motor('B')
+
+current_step = get_curr_step()
+a_motors.set_curr_step([current_step[0], current_step[1]])
+b_motors.set_curr_step([current_step[2], current_step[3]])
 
 height = 492
 width = 616
@@ -136,3 +164,4 @@ def move(coords):
 			#time.sleep(.002)
 
 	save_steps(steps)
+	save_curr_steps([a_motors.get_steps[0], a_motors.get_steps[1], b_motors.get_steps[0], b_motors.get_steps[1]])
