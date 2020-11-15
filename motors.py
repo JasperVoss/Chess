@@ -51,6 +51,7 @@ class Motor:
             self.output[i+1] = self.step_seq[self.curr_step0][i]
         for i in self.output:
             out = out + i
+        print(out)
         mcp.output(out)
                 
     def move_step1(self, direction):
