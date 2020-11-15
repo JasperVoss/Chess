@@ -20,12 +20,10 @@ def get_curr_step():
     for i in range(4):
         steps[i] = int(steps[i])
 
-    print(steps)
     return steps
 
 def save_curr_steps():
     steps = [a_motors.get_steps()[0], a_motors.get_steps()[1], b_motors.get_steps()[0], b_motors.get_steps()[1]]
-    print(steps)
     file = open("curr_steps.txt", "w")
     for s in steps:
         file.write(str(s)+"\n")
