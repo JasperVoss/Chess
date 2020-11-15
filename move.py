@@ -26,7 +26,7 @@ def save_curr_steps():
     steps = [a_motors.get_steps()[0], a_motors.get_steps()[1], b_motors.get_steps()[0], b_motors.get_steps()[1]]
     file = open("curr_steps.txt", "w")
     for s in steps:
-        step_file.write(str(s)+"\n")
+        file.write(str(s)+"\n")
     file.close()
 
 
