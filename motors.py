@@ -34,7 +34,7 @@ class Motor:
     def get_steps(self):
         return [self.curr_step0, self.curr_step1]
 
-    def set_current_step(self, step0, step1):
+    def set_curr_step(self, step0, step1):
         self.curr_step0 = step0
         self.curr_step1 = step1
 
