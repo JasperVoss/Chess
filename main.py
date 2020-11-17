@@ -14,14 +14,13 @@ def magnet_off():
 
 magnet_off()
 
+for i in range(4):
+	move.manual(i, -5)
+	
 while True:
-	move.move([100, 100])
+	move.move([300, 250])
 	time.sleep(.5)
-	move.move([randint(100, 500), randint(100, 400)])
-	time.sleep(.5)
-	move.move([randint(100, 500), randint(100, 400)])
-	time.sleep(.5)
-	move.move([500, 400])
+	move.move([randint(50, 566), randint(50, 442)])
 	time.sleep(.5)
 
 # r = move.get_radii([400, 300])
