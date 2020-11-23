@@ -20,9 +20,9 @@ for i in range(len(outPins)):
 
 while True:
     for i in range(len(outPins)):
-        gpio.setup(i, gpio.OUT)
+        #gpio.setup(i, gpio.OUT)
         gpio.output(outPins[i], 1)
-        gpio.setup(i, gpio.IN)
+        #gpio.setup(i, gpio.IN)
 
         for j in range(len(inPins)):
             if gpio.input(inPins[j]) == gpio.LOW:
