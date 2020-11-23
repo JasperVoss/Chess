@@ -7,7 +7,7 @@ inPins = [26, 19, 13, 6, 5, 11, 9, 10, 22, 23]
 
 gpio.setmode(gpio.BCM)
 for i in outPins:
-    gpio.setup(i, gpio.OUT)
+    gpio.setup(i, gpio.IN)
 for i in inPins:
     gpio.setup(i, gpio.IN)
 
@@ -20,9 +20,9 @@ for i in range(len(outPins)):
 
 while True:
     for i in range(len(outPins)):
-        #gpio.setup(i, gpio.OUT)
+        gpio.setup(outPins[i], gpio.OUT)
         gpio.output(outPins[i], 1)
-        #gpio.setup(i, gpio.IN)
+        gpio.setup(outPins[i], gpio.IN)
 
         for j in range(len(inPins)):
             if gpio.input(inPins[j]) == gpio.LOW:
