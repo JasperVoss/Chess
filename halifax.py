@@ -22,7 +22,6 @@ while True:
     for i in range(len(outPins)):
         gpio.setup(outPins[i], gpio.OUT)
         gpio.output(outPins[i], 1)
-        gpio.setup(outPins[i], gpio.IN)
 
         for j in range(len(inPins)):
             if gpio.input(inPins[j]) == gpio.LOW:
@@ -30,6 +29,7 @@ while True:
             else:
                 status[i][j] = 1
         gpio.output(outPins[i], 0)
+        gpio.setup(outPins[i], gpio.IN)
         time.sleep(.01)
     for s in status:
         print(s)
