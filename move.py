@@ -63,8 +63,6 @@ mm_per_step_1 = board_vars[3]
 mm_per_step_2 = board_vars[4]
 mm_per_step_3 = board_vars[5]
 
-print(height, width, mm_per_step_0, mm_per_step_1, mm_per_step_2, mm_per_step_3)
-
 tension = True
 
 def distance(point1, point2):
@@ -102,6 +100,7 @@ def save_steps(steps):
 	step_file.close()
 
 def manual(motor, steps):
+	print(height, width, mm_per_step_0, mm_per_step_1, mm_per_step_2, mm_per_step_3)
     if motor == 0:
         for i in range(abs(steps)):
             a_motors.move_step0(abs(steps)/steps)
