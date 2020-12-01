@@ -5,6 +5,24 @@ mm_per_step_1 = .266
 mm_per_step_2 = .2673
 mm_per_step_3 = .266
 
+def get_board_vars():
+	file = open("board_vars.txt", 'r')
+	text = file.read()
+	file.close()
+	var = []
+	curr_string = ""
+	for v in text:
+		if v == "\n":
+			var.append(curr_string)
+			curr_string = ""
+		else:
+			curr_string = curr_string + v
+	for i in range(len(var)):
+		var[i] = float(var[i])
+
+	return var
+
+
 def get_curr_step():
     file = open("curr_steps.txt", "r")
     steps = ["", "", "", ""]
@@ -37,8 +55,14 @@ current_step = get_curr_step()
 a_motors.set_curr_step(current_step[0], current_step[1])
 b_motors.set_curr_step(current_step[2], current_step[3])
 
-height = 492
-width = 616
+board_vars = get_board_vars()
+height = board_vars[0]
+width = board_vars[1]
+mm_per_step_0 = board_vars[2]
+mm_per_step_1 = board_vars[3]
+mm_per_step_2 = board_vars[4]
+mm_per_step_3 = board_vars[5]
+
 tension = True
 
 def distance(point1, point2):
