@@ -56,8 +56,8 @@ a_motors.set_curr_step(current_step[0], current_step[1])
 b_motors.set_curr_step(current_step[2], current_step[3])
 
 board_vars = get_board_vars()
-height = board_vars[0]
-width = board_vars[1]
+width = board_vars[0]
+height = board_vars[1]
 mm_per_step_0 = board_vars[2]
 mm_per_step_1 = board_vars[3]
 mm_per_step_2 = board_vars[4]
@@ -100,7 +100,6 @@ def save_steps(steps):
 	step_file.close()
 
 def manual(motor, steps):
-    print(height, width, mm_per_step_0, mm_per_step_1, mm_per_step_2, mm_per_step_3)
     if motor == 0:
         for i in range(abs(steps)):
             a_motors.move_step0(abs(steps)/steps)
