@@ -23,26 +23,25 @@ for i in range(4):
 # 	move.move([randint(50, 566), randint(50, 442)])
 # 	time.sleep(.5)
 
-r = move.get_radii([400, 300])
 d = int(input("distance?: "))
 
-for i in range(2):
+for i in range(4):
 	magnet_on()
-	r = move.move(r, [300, 250+d])
+	move.move([300, 250+d])
 	magnet_off()
-	r = move.move(r, [300-d, 250])
+	move.move([300-d, 250])
 	magnet_on()
-	r = move.move(r, [300+d, 250])
+	move.move([300+d, 250])
 	magnet_off()
-	r = move.move(r, [300, 250+d])
+	move.move([300, 250+d])
 	magnet_on()
-	r = move.move(r, [300, 250-d])
+	move.move([300, 250-d])
 	magnet_off()
-	r = move.move(r, [300+d, 250])
+	move.move([300+d, 250])
 	magnet_on()
-	r = move.move(r, [300-d, 250])
+	move.move([300-d, 250])
 	magnet_off()
-	r = move.move(r, [300, 250-d])
+	move.move([300, 250-d])
 
 move.move(r, [400, 300])
 
