@@ -24,6 +24,7 @@ for i in range(4):
 # 	time.sleep(.5)
 
 d = int(input("distance?: "))
+move.move([300, 250-d])
 
 for i in range(4):
 	magnet_on()
@@ -43,7 +44,7 @@ for i in range(4):
 	magnet_off()
 	move.move([300, 250-d])
 
-move.move(r, [400, 300])
+move.move([300, 250])
 
 for i in range(4):
 	move.manual(i, 5)
