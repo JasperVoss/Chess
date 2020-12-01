@@ -63,6 +63,8 @@ mm_per_step_1 = board_vars[3]
 mm_per_step_2 = board_vars[4]
 mm_per_step_3 = board_vars[5]
 
+print(height, width, mm_per_step_0, mm_per_step_1, mm_per_step_2, mm_per_step_3)
+
 tension = True
 
 def distance(point1, point2):
