@@ -110,7 +110,6 @@ def save_steps(steps):
 	step_file.close()
 
 def manual(motor, steps):
-    print(width, height, mm_per_step_0, mm_per_step_1, mm_per_step_2, mm_per_step_3)
     if motor == 0:
         for i in range(abs(steps)):
             a_motors.move_step0(abs(steps)/steps)
