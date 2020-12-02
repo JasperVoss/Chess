@@ -35,5 +35,7 @@ while True:
 		move.tension()
 	elif inputtext == "release":
 		move.release_tension()
+	elif inputtext == "reset pos":
+		move.save_steps([0, 0, 0, 0])
 	elif inputtext == "":
 		break
