@@ -16,7 +16,7 @@ magnet_off()
 
 r = [0, 0, 0, 0]
 while True:
-	inputtext = input(" > ")
+	inputtext = input(">> ")
 	if inputtext == "m":
 		move.manual(int(input("motor: ")), int(input("steps: ")))
 	elif inputtext == "on":
