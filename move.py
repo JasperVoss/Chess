@@ -64,7 +64,7 @@ mm_per_step_2 = board_vars[4]
 mm_per_step_3 = board_vars[5]
 
 def tension():
-	num_steps = 8
+	num_steps = 4
 	for i in range(num_steps):
 		for j in range(4):
 			manual(j, -1)
