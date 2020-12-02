@@ -31,5 +31,9 @@ while True:
 			move.save_steps(move.get_radii([int(input("current x: ")), int(input("current y: "))]))
 
 		move.move([int(input("final x: ")), int(input("final y: "))])
+	elif inputtext == "tension":
+		move.tension()
+	elif inputtext == "release":
+		move.release_tension()
 	elif inputtext == "":
 		break

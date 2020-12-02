@@ -63,7 +63,17 @@ mm_per_step_1 = board_vars[3]
 mm_per_step_2 = board_vars[4]
 mm_per_step_3 = board_vars[5]
 
-tension = True
+def tension():
+	num_steps = 8
+	for i in range(num_steps):
+		for j in range(4):
+			manual(j, -1)
+
+def release_tension():
+	num_steps = 8
+	for i in range(num_steps):
+		for j in range(4):
+			manual(j, 1)
 
 def distance(point1, point2):
     return math.sqrt((point1[0]-point2[0])**2+(point1[1]-point2[1])**2)
