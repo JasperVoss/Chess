@@ -52,7 +52,7 @@ def calibrate():
 	move([580, 455])
 	for i in range(4):
 		off(i)
-	manual(2, -100)
+	manual(2, -150)
 	manual(0, -4)
 	manual(1, -4)
 	manual(3, -4)
