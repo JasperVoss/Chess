@@ -49,19 +49,28 @@ def save_curr_steps():
 
 def calibrate():
 	final_pos = [597, 21]
+
+	file = open("calibration.txt", "r")
+    s = ["", "", "", "", "", ""]
+    index = 0
+    for s in file.read():
+        if s == "\n":
+            index += 1
+        else:
+            steps[index] = steps[index] + s
+    file.close()
+    for i in range(4):
+        steps[i] = int(steps[i])
+
 	move([580, 30])
 	for i in range(4):
 		off(i)
 	manual(3, -150)
-	manual(0, -4)
-	manual(1, -4)
-	manual(2, -4)
 	save_steps(get_radii(final_pos))
 	move([500, 100])
-	manual(0, 2)
-	manual(1, 3)
-	manual(2, 3)
-	manual(3, -10)
+	
+	for i in range(4):
+		manual(i, steps[i])
 
 a_motors = motors.Motor('A')
 b_motors = motors.Motor('B')
@@ -152,6 +161,16 @@ def off(motor):
         b_motors.off0()
     if motor == 3:
         b_motors.off1()
+
+def on(motor):
+    if motor == 0:
+        a_motors.on0()
+    if motor == 1:
+        a_motors.on1()
+    if motor == 2:
+        b_motors.on0()
+    if motor == 3:
+        b_motors.on1()
 
 def move(coords):
 	steps = get_steps()

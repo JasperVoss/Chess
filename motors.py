@@ -83,3 +83,17 @@ class Motor:
         for i in self.output:
             out = out + i
         mcp.output(out)
+    def on0(self):
+        out = ''
+        for i in range(4):
+            self.output[i+1] = self.step_seq[self.curr_step0][i]
+        for i in self.output:
+            out = out + i
+        mcp.output(out)
+    def on1(self):
+        out = ''
+        for i in range(4):
+            self.output[i+5] = self.step_seq[self.curr_step1][i]
+        for i in self.output:
+            out = out + i
+        mcp.output(out)
