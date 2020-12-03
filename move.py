@@ -59,7 +59,9 @@ def calibrate():
     file.close()
     for i in range(4):
         steps[i] = int(steps[i])
+
     final_pos = [steps[4], steps[5]]
+    print(final_pos)
 
     move([580, 30])
     for i in range(4):
