@@ -62,15 +62,15 @@ def calibrate():
     for i in range(4):
         steps[i] = int(steps[i])
 
-	move([580, 30])
-	for i in range(4):
-		off(i)
-	manual(3, -150)
-	save_steps(get_radii(final_pos))
-	move([500, 100])
+    move([580, 30])
+    for i in range(4):
+        off(i)
+    manual(3, -150)
+    save_steps(get_radii(final_pos))
+    move([500, 100])
 	
-	for i in range(4):
-		manual(i, steps[i])
+    for i in range(4):
+        manual(i, steps[i])
 
 a_motors = motors.Motor('A')
 b_motors = motors.Motor('B')
