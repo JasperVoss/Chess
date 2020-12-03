@@ -48,20 +48,20 @@ def save_curr_steps():
     file.close()
 
 def calibrate():
-	final_pos = [595, 475]
-	move([580, 455])
+	final_pos = [597, 21]
+	move([580, 30])
 	for i in range(4):
 		off(i)
-	manual(2, -150)
+	manual(3, -150)
 	manual(0, -4)
 	manual(1, -4)
-	manual(3, -4)
+	manual(2, -4)
 	save_steps(get_radii(final_pos))
-	manual(2, 4)
-	manual(0, -8)
-	manual(1, -9)
-	manual(3, -4)
-	move([500, 400])
+	manual(2, 0)
+	manual(0, 0)
+	manual(1, 0)
+	manual(3, 0)
+	move([500, 100])
 
 a_motors = motors.Motor('A')
 b_motors = motors.Motor('B')
