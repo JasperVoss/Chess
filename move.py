@@ -111,21 +111,21 @@ def get_radii(pos):
     ]
 
 def get_steps():
-	step_file = open("steps.txt", "r")
-	steps = ["", "", "", ""]
-	index = 0
+    step_file = open("steps.txt", "r")
+    steps = ["", "", "", ""]
+    index = 0
 
-	for s in step_file.read():
-		if s == "\n":
-			index += 1
-		else:
-			steps[index] = steps[index] + s
+    for s in step_file.read():
+        if s == "\n":
+            index += 1
+        else:
+            steps[index] = steps[index] + s
 
-	step_file.close()
-	for i in range(4):
-		steps[i] = int(steps[i])
+    step_file.close()
+    for i in range(4):
+        steps[i] = int(steps[i])
 
-	return steps
+    return steps
 
 def save_steps(steps):
 	step_file = open("steps.txt", "w")
