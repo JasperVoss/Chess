@@ -37,5 +37,7 @@ while True:
 		move.release_tension()
 	elif inputtext == "reset pos":
 		move.save_steps([0, 0, 0, 0])
+	elif inputtext == "calibrate":
+		move.calibrate()
 	elif inputtext == "":
 		break
