@@ -48,10 +48,8 @@ def save_curr_steps():
     file.close()
 
 def calibrate():
-    final_pos = [597, 21]
-
     file = open("calibration.txt", "r")
-    s = ["", "", "", "", "", ""]
+    steps = ["", "", "", "", "", ""]
     index = 0
     for s in file.read():
         if s == "\n":
@@ -61,6 +59,7 @@ def calibrate():
     file.close()
     for i in range(4):
         steps[i] = int(steps[i])
+    final_pos = [steps[4], steps[5]]
 
     move([580, 30])
     for i in range(4):
