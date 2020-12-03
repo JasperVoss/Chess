@@ -66,6 +66,8 @@ def calibrate():
     for i in range(4):
         off(i)
     manual(3, -150)
+    for i in range(3):
+    	manual(i, -3)
     save_steps(get_radii(final_pos))
     move([500, 100])
 	
