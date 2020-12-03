@@ -57,6 +57,10 @@ def calibrate():
 	manual(1, -4)
 	manual(3, -4)
 	save_steps(get_radii(final_pos))
+	manual(2, 3)
+	manual(0, -7)
+	manual(1, -9)
+	manual(3, -4)
 	move([500, 400])
 
 a_motors = motors.Motor('A')
