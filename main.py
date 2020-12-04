@@ -32,7 +32,7 @@ magnet_off()
 d = int(input("distance?: "))
 move.move([300, 250-d])
 
-for i in range(3):
+for i in range(2):
 	magnet_on()
 	move.move([300, 250+d])
 	magnet_off()
