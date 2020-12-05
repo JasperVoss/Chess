@@ -7,9 +7,9 @@ inpins = [26, 19, 13, 6, 5, 11, 9, 10, 22, 23]
 
 gpio.setmode(gpio.BCM)
 
-for i in outPins:
+for i in outpins:
     gpio.setup(i, gpio.OUT)
-for i in inPins:
+for i in inpins:
     gpio.setup(i, gpio.IN)
 
 
