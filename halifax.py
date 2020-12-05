@@ -36,9 +36,9 @@ def get_piece_pos():
 
         for j in range(len(inpins)):
             if gpio.input(inpins[j]) == gpio.LOW:
-                status[i][j] == 1
+                status[i][j] = 1
             else:
-                status[i][j] == 0
+                status[i][j] = 0
 
         gpio.output(outpins[i], 0)
 
