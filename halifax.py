@@ -46,10 +46,10 @@ def get_piece_pos():
 
 
 while True:
-    print(chr(27) + "[2J")
     state = get_piece_pos()
+    print(chr(27) + "[2J")
     for i in state:
         for j in i:
             print(j, end = " ")
         print("\n")
-    time.sleep(.5)
+    time.sleep(1)
