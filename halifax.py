@@ -6,32 +6,46 @@ outPins = [21, 20, 16, 12, 7, 8, 25, 25]
 inPins = [26, 19, 13, 6, 5, 11, 9, 10, 22, 23]
 
 gpio.setmode(gpio.BCM)
+
 for i in outPins:
-    gpio.setup(i, gpio.IN)
+    gpio.setup(i, gpio.OUT)
 for i in inPins:
     gpio.setup(i, gpio.IN)
 
-status = []
-template = []
-for i in range(len(inPins)):
-    template.append(0)
-for i in range(len(outPins)):
-    status.append(template)
 
-while True:
-    for i in range(len(outPins)):
-        gpio.setup(outPins[i], gpio.OUT)
-        gpio.output(outPins[i], 1)
+def get_piece_pos():
 
-        for j in range(len(inPins)):
-            if gpio.input(inPins[j]) == gpio.LOW:
-                status[i][j] = 0
-            else:
-                status[i][j] = 1
-        gpio.output(outPins[i], 0)
-        gpio.setup(outPins[i], gpio.IN)
+    status = []
+    for i in range(8):
+        status.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+    for i in range(len(outpins)):
+
+        for p in inpins:
+            gpio.setup(p, gpio.OUT)
+            gpio.output(p, 0)
+
         time.sleep(.01)
-    for s in status:
-        print(s)
-    print('\n\n')
-    time.sleep(3)
+
+        for p in inpins:
+            gpio.setup(p, gpio.IN)
+
+        gpio.output(p, 1)
+
+        time.sleep(.01)
+
+        for j in range(len(inpins)):
+            if gpio.input(inpins[j]) == gpio.LOW:
+                status[i][j] == 1
+            else:
+                status[i][j] == 0
+
+        gpio.output(p, 0)
+
+    return status
+
+
+for i in status:
+    for j in i:
+        print(j, end = " ")
+    print("\n")
