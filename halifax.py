@@ -2,7 +2,7 @@ import RPi.GPIO as gpio
 import time
 
 
-outPins = [21, 20, 16, 12, 7, 8, 25, 25]
+outPins = [21, 20, 16, 12, 7, 8, 25, 24]
 inPins = [26, 19, 13, 6, 5, 11, 9, 10, 22, 23]
 
 gpio.setmode(gpio.BCM)
@@ -45,7 +45,13 @@ def get_piece_pos():
     return status
 
 
-for i in status:
-    for j in i:
-        print(j, end = " ")
-    print("\n")
+while True:
+    inpu = input("")
+    if inpu == "":
+        state = get_piece_pos():
+        for i in state:
+            for j in i:
+                print(j, end = " ")
+            print("\n")
+    else:
+        break
