@@ -48,7 +48,7 @@ def get_piece_pos():
 while True:
     inpu = input("")
     if inpu == "":
-        state = get_piece_pos():
+        state = get_piece_pos()
         for i in state:
             for j in i:
                 print(j, end = " ")
