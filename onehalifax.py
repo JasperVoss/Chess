@@ -17,10 +17,7 @@ while True:
 
     gpio.output(outpin, 0)
     time.sleep(.1)
-    if gpio.input(inpin) == gpio.LOW:
-    	status = 1
-    else:
-    	status = 0
     gpio.output(outpin, 0)
+    print(gpio.input(inpin))
 
     print(status)
