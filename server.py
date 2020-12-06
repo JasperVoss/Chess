@@ -1,7 +1,7 @@
 import socket, threading
 
 HEADER = 64
-PORT = 5060
+PORT = 5061
 SERVER = "192.168.1.18"
 ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
@@ -37,7 +37,7 @@ def main():
 	thread = threading.Thread(target=receive, args=(conn, addr))
 	thread.start()
 	while True:
-		send(conn, input("Message: "))
+		send(conn, input(">> "))
 		
 
 print("[STARTING] server is starting...")

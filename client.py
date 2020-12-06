@@ -1,16 +1,18 @@
 import socket, threading
 
 HEADER = 64
-PORT = 5060
+PORT = 5061
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
 SERVER = "192.168.1.18"
 ADDR = (SERVER, PORT)
 
 
-def receive(client):
+def receive():
 	while True:
+		print('Waiting...')
 		msg_length = client.recv(HEADER).decode(FORMAT)
+		print('Received!')
 		if msg_length:
 			msg_length = int(msg_length)
 			msg = client.recv(msg_length).decode(FORMAT)
@@ -27,7 +29,7 @@ def send(msg):
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
-thread = threading.Thread(target=receive, args=(client))
+thread = threading.Thread(target=receive)
 thread.start()
 
 while True:
