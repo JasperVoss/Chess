@@ -24,7 +24,18 @@ def handle_client(conn, addr):
 				connected = False
 
 			print(f"{addr}:  {msg}")
+			send("Msg Received", conn)
+
 	conn.close()
+
+def send(msg, conn):
+	message = msg.encode(FORMAT)
+	msg_length = len(message)
+	send_length = str(msg_length).encode(FORMAT)
+	send_length += b' ' * (HEADER - len(send_length))
+	conn.send(send_length)
+	conn.send(message)
+
 
 def start():
 	server.listen()
