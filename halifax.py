@@ -56,4 +56,4 @@ while True:
         for j in i:
             print(j, end = "  ")
         print("")
-    time.sleep(1)
+    time.sleep(.1)
