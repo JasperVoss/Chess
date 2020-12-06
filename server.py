@@ -1,7 +1,7 @@
 import socket, threading
 
 HEADER = 64
-PORT = 5051
+PORT = 5052
 SERVER = "192.168.1.18"
 ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
@@ -20,6 +20,7 @@ def receive(conn, addr):
 			msg = conn.recv(msg_length).decode(FORMAT)
 
 			print(f"{addr}:  {msg}")
+			send(conn, msg)
 			print("\n\n>> ", end="")
 
 
