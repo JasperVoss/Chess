@@ -5,9 +5,10 @@ PORT = 5052
 SERVER = "192.168.1.18"
 ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
-DISCONNECT_MESSAGE = "!DISCONNECT"
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
 server.bind(ADDRESS)
 
 def receive(conn, addr):
