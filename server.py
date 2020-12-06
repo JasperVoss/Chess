@@ -20,7 +20,7 @@ def handle_client(conn, addr):
 			msg_length = int(msg_length)
 			msg = conn.recv(msg_length).decode(FORMAT)
 
-			if msg == "DISCONNECT_MESSSAGE":
+			if msg == DISCONNECT_MESSSAGE:
 				connected = False
 
 			print(f"{addr}:  {msg}")
