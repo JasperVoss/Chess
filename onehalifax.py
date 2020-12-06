@@ -2,22 +2,25 @@ import RPi.GPIO as gpio
 import time
 
 
-outPins = [21, 20, 16, 12, 7, 8, 25, 25]
-inPins = [26, 19, 13, 6, 5, 11, 9, 10, 22, 23]
+outpin = 21
+inpin = 26
 
 gpio.setmode(gpio.BCM)
-for i in outPins:
-    gpio.setup(i, gpio.OUT)
-    gpio.output(i, 0)
-for i in inPins:
-    gpio.setup(i, gpio.IN)
-
-gpio.output(outPins[0], 1)
+gpio.setup(outpin, gpio.OUT)
+gpio.output(outpin, 0)
+gpio.setup(inpin, gpio.IN)
 
 while True:
-    if gpio.input(inPins[0]) == gpio.LOW:
-        status = 1
-    else:
-        status = 0
-    print(status)
+    gpio.setup(inpin, gpio.OUT)
     time.sleep(1)
+    gpio.setup(inpin, gpio.IN)
+
+    gpio.output(outpin, 0)
+    time.sleep(.1)
+    if gpio.input(inpin) == gpio.LOW:
+    	status = 1
+    else:
+    	status = 0
+    gpio.output(outpin, 0)
+
+    print(status)

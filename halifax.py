@@ -14,7 +14,9 @@ for i in inpins:
 
 
 def get_piece_pos():
-
+    for p in outpins:
+        gpio.output(p, 0)
+        
     status = []
     for i in range(8):
         status.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
