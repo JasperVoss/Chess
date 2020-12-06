@@ -20,6 +20,6 @@ while True:
     time.sleep(0)
     print(chr(27) + "[2J")
     print(gpio.input(inpin))
-
+    time.sleep(.2)
     gpio.output(outpin, 0)
 
