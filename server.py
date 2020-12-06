@@ -7,8 +7,6 @@ ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.TCPServer.allow_reuse_address = True
-
 server.bind(ADDRESS)
 
 def receive(conn, addr):
