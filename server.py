@@ -7,7 +7,7 @@ ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 server.bind(ADDRESS)
 
@@ -21,7 +21,6 @@ def receive(conn, addr):
 			msg = conn.recv(msg_length).decode(FORMAT)
 
 			print(f"{addr}:  {msg}")
-			send(conn, msg)
 			print("\n\n>> ", end="")
 
 
