@@ -1,16 +1,41 @@
-import socket
+import socket, threading
 
-HEADERSIZE = 10
+HEADER = 64
+PORT = 5055
+SERVER = socket.gethostbyname(socket.gethostname())
+ADDRESS = (SERVER, PORT)
+FORMAT = 'utf-8'
+DISCONNECT_MESSAGE = "!DISCONNECT"
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((socket.gethostname(), 1235))
-s.listen(5)
+print(SERVER)
 
-while True:
-	clientsocket, address = s.accept()
-	print(f"Connection from {address} has been established!")
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(ADDRESS)
 
-	msg = "Welcome to the server!"
-	msg = f'{len(msg):<{HEADERSIZE}}'+msg
+def handle_client(conn, addr):
+	print(f"[NEW CONNECTION] {addr} connected.")
 
-	clientsocket.send(bytes(msg, "utf-8")) 
+	connected = True
+	while connected:
+		msg_length = conn.recv(HEADER).decode(FORMAT)
+		if msg_length:
+			msg_length = int(msg_length)
+			msg = conn.recv(msg_length).decode(FORMAT)
+
+			if msg == "DISCONNECT_MESSSAGE":
+				connected = False
+
+			print(f"{addr}:  {msg}")
+	conn.close()
+
+def start():
+	server.listen()
+	print(f"[LISTENING] Server is listening on {SERVER}")
+	while True:
+		conn, addr = server.accept()
+		thread = threading.Thread(target=handle_client, args=(conn, addr))
+		thread.start()
+		print(f"[ACTIVE CONNECTIONS] {threading.activeCount()-1}")
+
+print("[STARTING] server is starting...")
+start()
