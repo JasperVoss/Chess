@@ -1,10 +1,10 @@
 import socket, threading
 
 HEADER = 64
-PORT = 5062
+PORT = 5050
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
-SERVER = "192.168.1.18"
+SERVER = "71.232.76.201"
 ADDR = (SERVER, PORT)
 
 
@@ -16,6 +16,7 @@ def receive():
 			msg = client.recv(msg_length).decode(FORMAT)
 
 			print(f"[SERVER]: {msg}")
+			print("\n\n>> ", end="")
 
 def send(msg):
 	message = msg.encode(FORMAT)
