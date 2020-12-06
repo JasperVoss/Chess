@@ -2,12 +2,10 @@ import socket, threading
 
 HEADER = 64
 PORT = 5055
-SERVER = socket.gethostbyname(socket.gethostname())
+SERVER = "192.168.1.18"
 ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
-
-print(SERVER)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDRESS)
