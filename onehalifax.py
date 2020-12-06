@@ -19,5 +19,3 @@ while True:
     time.sleep(.1)
     gpio.output(outpin, 0)
     print(gpio.input(inpin))
-
-    print(status)
