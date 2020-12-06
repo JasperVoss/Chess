@@ -12,10 +12,13 @@ gpio.setup(inpin, gpio.IN)
 
 while True:
     gpio.setup(inpin, gpio.OUT)
+    gpio.output(inpin, 0)
     time.sleep(1)
     gpio.setup(inpin, gpio.IN)
 
-    gpio.output(outpin, 0)
-    time.sleep(.1)
-    gpio.output(outpin, 0)
+    gpio.output(outpin, 1)
+    time.sleep(1)
     print(gpio.input(inpin))
+
+    gpio.output(outpin, 0)
+
