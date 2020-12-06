@@ -1,7 +1,7 @@
 import socket, threading
 
 HEADER = 64
-PORT = 5057
+PORT = 5058
 SERVER = "192.168.1.18"
 ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
@@ -20,7 +20,7 @@ def handle_client(conn, addr):
 			msg_length = int(msg_length)
 			msg = conn.recv(msg_length).decode(FORMAT)
 
-			if msg == DISCONNECT_MESSSAGE:
+			if msg == DISCONNECT_MESSAGE:
 				connected = False
 
 			print(f"{addr}:  {msg}")
