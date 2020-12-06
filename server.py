@@ -1,7 +1,7 @@
 import socket, threading
 
 HEADER = 64
-PORT = 5056
+PORT = 5057
 SERVER = "192.168.1.18"
 ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
