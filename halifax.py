@@ -3,7 +3,7 @@ import time
 
 
 outpins = [21, 20, 16, 12, 7, 8, 25, 24]
-inpins = [26, 19, 13, 6, 5, 11, 9, 10, 22, 23]
+inpins = [23, 22, 10, 9, 11, 5, 6, 13, 19, 26]
 
 gpio.setmode(gpio.BCM)
 
