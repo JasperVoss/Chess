@@ -1,7 +1,7 @@
 import socket, threading
 
 HEADER = 64
-PORT = 5052
+PORT = 5054
 SERVER = "192.168.1.18"
 ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
@@ -19,7 +19,6 @@ def receive(conn, addr):
 			msg = conn.recv(msg_length).decode(FORMAT)
 
 			print(f"{addr}:  {msg}")
-			send(conn, msg)
 			print("\n\n>> ", end="")
 
 
@@ -32,7 +31,7 @@ def send(conn, msg):
 	conn.send(message)
 
 
-def main():
+def start():
 	server.listen()
 	print(f"[LISTENING] Server is listening on {SERVER}")
 	conn, addr = server.accept()
@@ -43,4 +42,4 @@ def main():
 		
 
 print("[STARTING] server is starting...")
-main()
+start()

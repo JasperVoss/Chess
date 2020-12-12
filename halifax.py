@@ -15,10 +15,7 @@ for i in inpins:
 
 def get_piece_pos():
         
-    status = []
-    for i in range(8):
-        status.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-
+    pos = [[0 for _ in range(10)] for _ in range(8)]
         
     for p in outpins:
         gpio.output(p, 0)
@@ -29,24 +26,24 @@ def get_piece_pos():
             gpio.setup(p, gpio.OUT)
             gpio.output(p, 0)
 
-        time.sleep(.01)
+        time.sleep(.1)
 
         for p in inpins:
             gpio.setup(p, gpio.IN)
 
         gpio.output(outpins[i], 1)
 
-        time.sleep(.01)
+        time.sleep(.1)
 
         for j in range(len(inpins)):
             if gpio.input(inpins[j]) == 0:
-                status[i][j] = 1
+                pos[i][j] = 1
             else:
-                status[i][j] = 0
+                pos[i][j] = 0
 
         gpio.output(outpins[i], 0)
 
-    return status
+    return pos
 
 
 while True:
