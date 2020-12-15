@@ -26,14 +26,14 @@ def get_piece_pos():
             gpio.setup(p, gpio.OUT)
             gpio.output(p, 0)
 
-        time.sleep(.02)
+        time.sleep(.05)
 
         for p in inpins:
             gpio.setup(p, gpio.IN)
 
         gpio.output(outpins[i], 1)
 
-        time.sleep(.02)
+        time.sleep(.05)
 
         for j in range(len(inpins)):
             if gpio.input(inpins[j]) == 0:
