@@ -12,46 +12,45 @@ for i in outpins:
 for i in inpins:
     gpio.setup(i, gpio.IN)
 
-gpio.output(8, 1)
 
-# def get_piece_pos():
+def get_piece_pos():
         
-#     pos = [[0 for _ in range(10)] for _ in range(8)]
+    pos = [[0 for _ in range(10)] for _ in range(8)]
         
-#     for p in outpins:
-#         gpio.output(p, 0)
+    for p in outpins:
+        gpio.output(p, 0)
 
-#     for i in range(len(outpins)):
+    for i in range(len(outpins)):
 
-#         for p in inpins:
-#             gpio.setup(p, gpio.OUT)
-#             gpio.output(p, 0)
+        for p in inpins:
+            gpio.setup(p, gpio.OUT)
+            gpio.output(p, 0)
 
-#         time.sleep(.05)
+        time.sleep(.05)
 
-#         for p in inpins:
-#             gpio.setup(p, gpio.IN)
+        for p in inpins:
+            gpio.setup(p, gpio.IN)
 
-#         gpio.output(outpins[i], 1)
+        gpio.output(outpins[i], 1)
 
-#         time.sleep(.05)
+        time.sleep(.05)
 
-#         for j in range(len(inpins)):
-#             if gpio.input(inpins[j]) == 0:
-#                 pos[i][j] = 1
-#             else:
-#                 pos[i][j] = 0
+        for j in range(len(inpins)):
+            if gpio.input(inpins[j]) == 0:
+                pos[i][j] = 1
+            else:
+                pos[i][j] = 0
 
-#         gpio.output(outpins[i], 0)
+        gpio.output(outpins[i], 0)
 
-#     return pos
+    return pos
 
 
-# while True:
-#     state = get_piece_pos()
-#     print(chr(27) + "[2J")
-#     for i in state:
-#         for j in i:
-#             print(j, end = "  ")
-#         print("")
-#     time.sleep(.1)
+while True:
+    state = get_piece_pos()
+    print(chr(27) + "[2J")
+    for i in state:
+        for j in i:
+            print(j, end = "  ")
+        print("")
+    time.sleep(.1)
