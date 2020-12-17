@@ -51,6 +51,12 @@ while True:
 	elif inputtext == "motors on":
 		for i in range(4):
 			move.on(i)
-
+	elif inputtext == "show state":
+	    state = get_state()
+	    print(chr(27) + "[2J")
+	    for i in state:
+	        for j in i:
+	            print(j, end = "  ")
+	        print("")
 	elif inputtext == "":
 		break

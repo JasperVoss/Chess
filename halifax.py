@@ -13,7 +13,7 @@ for i in inpins:
     gpio.setup(i, gpio.IN)
 
 
-def get_piece_pos():
+def get_state():
         
     pos = [[0 for _ in range(10)] for _ in range(8)]
         
@@ -46,11 +46,11 @@ def get_piece_pos():
     return pos
 
 
-while True:
-    state = get_piece_pos()
-    print(chr(27) + "[2J")
-    for i in state:
-        for j in i:
-            print(j, end = "  ")
-        print("")
-    time.sleep(.1)
+# while True:
+#     state = get_piece_pos()
+#     print(chr(27) + "[2J")
+#     for i in state:
+#         for j in i:
+#             print(j, end = "  ")
+#         print("")
+#     time.sleep(.1)
