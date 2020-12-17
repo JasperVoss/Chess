@@ -1,5 +1,5 @@
 import RPi.GPIO as gpio
-import move, time
+import move, time, halifax
 
 magnet_pin = 4
 
@@ -52,7 +52,7 @@ while True:
 		for i in range(4):
 			move.on(i)
 	elif inputtext == "show state":
-	    state = get_state()
+	    state = halifax.get_state()
 	    print(chr(27) + "[2J")
 	    for i in state:
 	        for j in i:
