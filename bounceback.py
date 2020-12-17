@@ -22,7 +22,7 @@ while True:
 			for i in range(len(state)):
 				for j in range(len(state[i])):
 					if state[i][j] == 1:
-						move.move_square([i, j])
+						move.move_square(i, j)
 
 
 	# state = halifax.get_state()
