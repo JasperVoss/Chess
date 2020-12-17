@@ -105,8 +105,8 @@ for i in range(len(square_coords)):
         square_coords[i][j][1] = round(square_coords[i][0][1]+j*(square_coords[i][9][1]-square_coords[i][0][1])/9, 2)
 
 def move_square(i, j):
-    move(square_coords[i, j])
-    
+    move(square_coords[i][j])
+
 def tension():
 	num_steps = 4
 	for i in range(num_steps):
