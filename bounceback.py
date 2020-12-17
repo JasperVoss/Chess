@@ -23,6 +23,9 @@ while True:
 				for j in range(len(state[i])):
 					if state[i][j] == 1:
 						move.move_square(i, j)
+						magnet_on()
+						move.move_square(5, 4)
+						magnet_off()
 
 
 	# state = halifax.get_state()
