@@ -89,8 +89,6 @@ mm_per_step_3 = board_vars[5]
 corner_coords = [[board_vars[6], board_vars[7]], [board_vars[8], board_vars[9]], [board_vars[10], board_vars[11]], [board_vars[12], board_vars[13]]]#coordinates of the center of each corner square
 overshoot = board_vars[14]
 
-corner_coords = [[0, 0], [0, 70], [90, 70], [90, 6]]
-
 square_coords = [[[0, 0] for _ in range(10)] for _ in range(8)]
 
 for i in range(len(square_coords)):
