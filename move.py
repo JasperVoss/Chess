@@ -1,9 +1,5 @@
 import math, time, motors
 
-mm_per_step_0 = .265
-mm_per_step_1 = .266
-mm_per_step_2 = .2673
-mm_per_step_3 = .266
 
 def get_board_vars():
 	file = open("board_vars.txt", 'r')
