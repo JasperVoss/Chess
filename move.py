@@ -80,11 +80,33 @@ b_motors.set_curr_step(current_step[2], current_step[3])
 board_vars = get_board_vars()
 width = board_vars[0]
 height = board_vars[1]
+
 mm_per_step_0 = board_vars[2]
 mm_per_step_1 = board_vars[3]
 mm_per_step_2 = board_vars[4]
 mm_per_step_3 = board_vars[5]
 
+corner_coords = [[board_vars[6], board_vars[7]], [board_vars[8], board_vars[9]], [board_vars[10], board_vars[11]], [board_vars[12], board_vars[13]]]#coordinates of the center of each corner square
+overshoot = board_vars[14]
+
+corner_coords = [[0, 0], [0, 70], [90, 70], [90, 6]]
+
+square_coords = [[[0, 0] for _ in range(10)] for _ in range(8)]
+
+for i in range(len(square_coords)):
+    square_coords[i][0][0] = corner_coords[1][0] - i*(corner_coords[1][0]-corner_coords[0][0])/7
+    square_coords[i][0][1] = corner_coords[1][1] - i*(corner_coords[1][1]-corner_coords[0][1])/7
+
+    square_coords[i][9][0] = corner_coords[2][0] - i*(corner_coords[2][0]-corner_coords[3][0])/7
+    square_coords[i][9][1] = corner_coords[2][1] - i*(corner_coords[2][1]-corner_coords[3][1])/7
+
+    for j in range(len(square_coords[i])):
+        square_coords[i][j][0] = round(square_coords[i][0][0]+j*(square_coords[i][9][0]-square_coords[i][0][0])/9, 2)
+        square_coords[i][j][1] = round(square_coords[i][0][1]+j*(square_coords[i][9][1]-square_coords[i][0][1])/9, 2)
+
+def move_square(i, j):
+    move(square_coords[i, j])
+    
 def tension():
 	num_steps = 4
 	for i in range(num_steps):
