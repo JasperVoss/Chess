@@ -45,12 +45,3 @@ def get_state():
 
     return pos
 
-
-while True:
-    state = get_state()
-    print(chr(27) + "[2J")
-    for i in state:
-        for j in i:
-            print(j, end = "  ")
-        print("")
-    time.sleep(.01)
