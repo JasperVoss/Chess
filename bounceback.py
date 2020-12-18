@@ -17,13 +17,12 @@ magnet_off()
 while True:
 	state = halifax.get_state()
 	if state[4][4] != 1:
-		while state[4][4] != 1:
-			state = halifax.get_state()
-			for i in range(len(state)):
-				for j in range(len(state[i])):
-					if state[i][j] == 1:
-						move.move_square(i, j)
-						magnet_on()
-						move.move_piece(4, 4)
-						magnet_off()
+		state = halifax.get_state()
+		for i in range(len(state)):
+			for j in range(len(state[i])):
+				if state[i][j] == 1:
+					move.move_square(i, j)
+					magnet_on()
+					move.move_piece(4, 4)
+					magnet_off()
 
