@@ -101,6 +101,7 @@ for i in range(len(square_coords)):
     for j in range(len(square_coords[i])):
         square_coords[i][j][0] = round(square_coords[i][0][0]+j*(square_coords[i][9][0]-square_coords[i][0][0])/9, 2)
         square_coords[i][j][1] = round(square_coords[i][0][1]+j*(square_coords[i][9][1]-square_coords[i][0][1])/9, 2)
+        
 
 def move_piece(i, j):
     steps = get_steps()
