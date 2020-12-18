@@ -46,8 +46,8 @@ def get_state():
     return pos
 
 while True:
-    print('\n' * 80)
     state = get_state()
+    print('\n' * 80)
     for i in state:
         for j in i:
             print(j, end = '  ')
