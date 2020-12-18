@@ -104,7 +104,7 @@ for i in range(len(square_coords)):
 
 def move_piece(i, j):
     steps = get_steps()
-    
+
     y0 = ((steps[0]*mm_per_step_0)**2-(steps[1]*mm_per_step_1)**2+height**2)/2/height
     x0 = math.sqrt((mm_per_step_0*steps[0])**2-y0**2)
 
@@ -116,7 +116,7 @@ def move_piece(i, j):
     else:
         x_over = 0
     y_over = math.copysign(math.sqrt(overshoot**2-x_over**2), y)
-    move(square_coords[i][j][0]+x_over, square_coords[i][j][1]+y_over)
+    move([square_coords[i][j][0]+x_over, square_coords[i][j][1]+y_over])
 
 def move_square(i, j):
     move(square_coords[i][j])
