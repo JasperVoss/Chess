@@ -16,32 +16,14 @@ magnet_off()
 
 while True:
 	state = halifax.get_state()
-	if state[5][4] != 1:
-		while state[5][4] != 1:
+	if state[4][4] != 1:
+		while state[4][4] != 1:
 			state = halifax.get_state()
 			for i in range(len(state)):
 				for j in range(len(state[i])):
 					if state[i][j] == 1:
 						move.move_square(i, j)
 						magnet_on()
-						move.move_square(5, 4)
+						move.move_piece(4, 4)
 						magnet_off()
-
-
-	# state = halifax.get_state()
-	# departed = False
-	# arrived = False
-	# depart_square = [0, 0]
-	# to_square = [0, 0]
-	# for i in range(len(state)):
-	# 	for j in range(len(i)):
-	# 		difference[i][j] = state[i][j] - old_state[i][j]
-	# 		if difference[i][j] == -1:
-	# 			departed = True
-	# 			depart_square = [i, j]
-	# 		elif difference[i][j] == 1:
-	# 			arrived = True
-	# 			to_square = [i, j]
-
-
 

@@ -102,9 +102,21 @@ for i in range(len(square_coords)):
         square_coords[i][j][0] = round(square_coords[i][0][0]+j*(square_coords[i][9][0]-square_coords[i][0][0])/9, 2)
         square_coords[i][j][1] = round(square_coords[i][0][1]+j*(square_coords[i][9][1]-square_coords[i][0][1])/9, 2)
 
+def move_piece(i, j):
+    pos = get_position(get_radii())
+    x = square_coords[i][j][0]-pos[0]
+    y = square_coords[i][j][1]-pos[1]
+
+    if x != 0:
+        x_over = math.copysign(math.sqrt(overshoot**2/((y**2)/(x**2)+1)), x)
+    else:
+        x_over = 0
+    y_over = math.copysign(math.sqrt(overshoot**2-x_over**2), y)
+    move(square_coords[i][j][0]+x_over, square_coords[i][j][1]+y_over)
+
 def move_square(i, j):
     move(square_coords[i][j])
-
+    
 def tension():
 	num_steps = 4
 	for i in range(num_steps):
@@ -127,6 +139,11 @@ def get_radii(pos):
     round(distance([width, height], pos)/mm_per_step_2),
     round(distance([width, 0], pos)/mm_per_step_3)
     ]
+
+def get_position(radii):
+    y = (radii[0]**2+height**2-radii[1]**2)/(2*height)
+    x = math.sqrt(radii[0]**2-y**2)
+    return [x, y]
 
 def get_steps():
     step_file = open("steps.txt", "r")
