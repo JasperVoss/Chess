@@ -23,7 +23,9 @@ while True:
 				for j in range(len(state[i])):
 					if state[i][j] == 1:
 						move.move_square(i, j)
+						print(i, j)
 						magnet_on()
 						move.move_piece(4, 4)
+						print(4, 4)
 						magnet_off()
 
