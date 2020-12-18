@@ -14,8 +14,8 @@ def magnet_off():
 
 magnet_off()
 
-squarex = input("x: ")
-squarey = input("y:")
+squarex = int(input("x: "))
+squarey = int(input("y:"))
 while True:
 	state = halifax.get_state()
 	if state[squarey][squarex] != 1:
