@@ -17,7 +17,6 @@ magnet_off()
 while True:
 	state = halifax.get_state()
 	if state[4][4] != 1:
-		state = halifax.get_state()
 		for i in range(len(state)):
 			for j in range(len(state[i])):
 				if state[i][j] == 1:
