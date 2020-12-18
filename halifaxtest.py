@@ -51,3 +51,4 @@ while True:
         for j in i:
             print(j, end = '  ')
         print('')
+    print(“\n” * 80)
