@@ -13,14 +13,14 @@ for i in inpins:
     gpio.setup(i, gpio.IN)
 
 
-def get_state():
+def get_state(l, u):
         
     pos = [[0 for _ in range(10)] for _ in range(8)]
         
     for p in outpins:
         gpio.output(p, 0)
 
-    for i in range(len(outpins)):
+    for i in range(l, u):
 
         for p in inpins:
             gpio.setup(p, gpio.OUT)
@@ -45,8 +45,10 @@ def get_state():
 
     return pos
 
+lower = input('lower: ')
+upper = input('uppder: ')
 while True:
-    state = get_state()
+    state = get_state(lower, upper)
     print('\n' * 80)
     for i in state:
         for j in i:
