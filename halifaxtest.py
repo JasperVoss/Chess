@@ -45,8 +45,8 @@ def get_state(l, u):
 
     return pos
 
-lower = input('lower: ')
-upper = input('uppder: ')
+lower = int(input('lower: '))
+upper = int(input('upper: '))
 while True:
     state = get_state(lower, upper)
     print('\n' * 80)
