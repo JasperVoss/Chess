@@ -20,7 +20,7 @@ while True:
 	state = halifax.get_state()
 	for i in range(len(state)):
 		for j in range(len(state[i])):
-			if state[i][j] == 1:
+			if state[i][j] == 1 and i != squarey and j != squarex:
 				move.move_square(i, j)
 				magnet_on()
 				move.move_piece(squarey, squarex)
