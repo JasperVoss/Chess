@@ -1,4 +1,17 @@
-import math, time, motors, halifax, main
+import math, time, motors, halifax
+import RPi.GPIO as gpio
+
+magnet_pin = 4
+
+gpio.setmode(gpio.BCM)
+gpio.setup(magnet_pin, gpio.OUT)
+
+def magnet_on():
+    gpio.output(magnet_pin, 1)
+    
+def magnet_off():
+    gpio.output(magnet_pin, 0)
+
 
 
 def get_board_vars():
@@ -50,7 +63,7 @@ def calibrate_squares(coords0):
     final3 = []
 
     move(coords0)
-    main.magnet_on()
+    magnet_on()
     if halifax.get_state()[1][6] == 1:
         tick1 = 0
         tick2 = 0
@@ -78,7 +91,7 @@ def calibrate_squares(coords0):
                 break
         final0.append(coords0[1]+(tick1+tick2)/2)
 
-    main.magnet_off()
+    magnet_off()
     print(coords0)
     print(final0)
 
