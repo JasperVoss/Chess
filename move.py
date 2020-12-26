@@ -268,10 +268,10 @@ def move(coords):
 			b_motors.move_step0(abs(d2)/d2)
 			steps[2] += int(abs(d2)/d2)
 			#time.sleep(.0004)
-        for i in range(abs(d3)):
+		for i in range(abs(d3)):
 			b_motors.move_step1(abs(d3)/d3)
 			steps[3] += int(abs(d3)/d3)
 			#time.sleep(.0004)
 
-        save_steps(steps)
+	save_steps(steps)
 	save_curr_steps()
