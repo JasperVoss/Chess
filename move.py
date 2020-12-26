@@ -1,4 +1,4 @@
-import math, time, motors
+import math, time, motors, halifax
 
 
 def get_board_vars():
@@ -42,6 +42,46 @@ def save_curr_steps():
     for s in steps:
         file.write(str(s)+"\n")
     file.close()
+
+def calibrate_squares(coords0):
+    final0 = []
+    final1 = []
+    final2 = []
+    final3 = []
+
+    move(coords0)
+    if halifax.get_state()[1][6] == 1:
+        tick1 = 0
+        tick2 = 0
+        while True:
+            tick1 -= 1
+            move([coords0[0]+tick1, coords0[1]])
+            if halifax.get_state()[1][6] == 0:
+                break
+        while True:
+            tick2 += 1
+            move([coords0[0]+tick2, coords0[1]])
+            if halifax.get_state()[1][6] == 0:
+                break
+        final0.append(coords0[0]+(tick1+tick2)/2)
+
+        while True:
+            tick1 -= 1
+            move([coords0[0], coords0[1]+tick1])
+            if halifax.get_state()[1][6] == 0:
+                break
+        while True:
+            tick2 += 1
+            move([coords0[0], coords0[1]+tick2])
+            if halifax.get_state()[1][6] == 0:
+                break
+        final0.append(coords0[1]+(tick1+tick2)/2)
+
+    print(coords0)
+    print(final0)
+
+def hard_calibrate():
+    pass
 
 def calibrate():
     file = open("calibration.txt", "r")
@@ -275,3 +315,5 @@ def move(coords):
 
 	save_steps(steps)
 	save_curr_steps()
+
+calibrate_squares(square_coords[6][1])

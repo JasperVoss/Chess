@@ -15,7 +15,7 @@ for i in inpins:
 
 def get_state():
         
-    pos = [[0 for _ in range(10)] for _ in range(8)]
+    pos = [[0 for _ in range(8)] for _ in range(10)]
         
     for p in outpins:
         gpio.output(p, 0)
@@ -37,9 +37,9 @@ def get_state():
 
         for j in range(len(inpins)):
             if gpio.input(inpins[j]) == 0:
-                pos[i][j] = 1
+                pos[j][i] = 1
             else:
-                pos[i][j] = 0
+                pos[j][i] = 0
 
         gpio.output(outpins[i], 0)
 
