@@ -48,6 +48,12 @@ while True:
 	elif inputtext == "calibrate":
 		move.calibrate()
 
+	elif inputtext == "all":
+		steps = int(input("steps: "))
+		for i in range(steps):
+			for j in range(4):
+				move.manual(j, -1)
+
 	elif inputtext == "motors on":
 		for i in range(4):
 			move.on(i)
