@@ -1,4 +1,7 @@
-import math, time, motors, halifax
+import math
+import time
+import motors
+import halifax
 import RPi.GPIO as gpio
 
 magnet_pin = 4
@@ -6,12 +9,13 @@ magnet_pin = 4
 gpio.setmode(gpio.BCM)
 gpio.setup(magnet_pin, gpio.OUT)
 
+
 def magnet_on():
     gpio.output(magnet_pin, 1)
-    
+
+
 def magnet_off():
     gpio.output(magnet_pin, 0)
-
 
 
 def get_board_vars():
@@ -49,15 +53,19 @@ def get_curr_step():
 
     return steps
 
+
 def save_curr_steps():
-    steps = [a_motors.get_steps()[0], a_motors.get_steps()[1], b_motors.get_steps()[0], b_motors.get_steps()[1]]
+    steps = [a_motors.get_steps()[0], a_motors.get_steps()[1],
+                                b_motors.get_steps()[0], b_motors.get_steps()[1]]
     file = open("curr_steps.txt", "w")
     for s in steps:
         file.write(str(s)+"\n")
     file.close()
 
+
 def hard_calibrate():
     pass
+
 
 def calibrate():
     file = open("calibration.txt", "r")
@@ -82,9 +90,10 @@ def calibrate():
     	manual(i, -8)
     save_steps(get_radii(final_pos))
     move([500, 100])
-	
+
     for i in range(4):
         manual(i, steps[i])
+
 
 a_motors = motors.Motor('A')
 b_motors = motors.Motor('B')
@@ -102,27 +111,35 @@ mm_per_step_1 = board_vars[3]
 mm_per_step_2 = board_vars[4]
 mm_per_step_3 = board_vars[5]
 
-corner_coords = [[board_vars[6], board_vars[7]], [board_vars[8], board_vars[9]], [board_vars[10], board_vars[11]], [board_vars[12], board_vars[13]]]#coordinates of the center of each corner square
+corner_coords = [[board_vars[6], board_vars[7]], [board_vars[8], board_vars[9]], [board_vars[10], board_vars[11]], [
+    board_vars[12], board_vars[13]]]  # coordinates of the center of each corner square
 overshoot = board_vars[14]
 
 square_coords = [[[0, 0] for _ in range(10)] for _ in range(8)]
 
 for i in range(len(square_coords)):
-    square_coords[i][0][0] = corner_coords[1][0] - i*(corner_coords[1][0]-corner_coords[0][0])/7
-    square_coords[i][0][1] = corner_coords[1][1] - i*(corner_coords[1][1]-corner_coords[0][1])/7
+    square_coords[i][0][0] = corner_coords[1][0] - \
+        i*(corner_coords[1][0]-corner_coords[0][0])/7
+    square_coords[i][0][1] = corner_coords[1][1] - \
+        i*(corner_coords[1][1]-corner_coords[0][1])/7
 
-    square_coords[i][9][0] = corner_coords[2][0] - i*(corner_coords[2][0]-corner_coords[3][0])/7
-    square_coords[i][9][1] = corner_coords[2][1] - i*(corner_coords[2][1]-corner_coords[3][1])/7
+    square_coords[i][9][0] = corner_coords[2][0] - \
+        i*(corner_coords[2][0]-corner_coords[3][0])/7
+    square_coords[i][9][1] = corner_coords[2][1] - \
+        i*(corner_coords[2][1]-corner_coords[3][1])/7
 
     for j in range(len(square_coords[i])):
-        square_coords[i][j][0] = round(square_coords[i][0][0]+j*(square_coords[i][9][0]-square_coords[i][0][0])/9, 2)
-        square_coords[i][j][1] = round(square_coords[i][0][1]+j*(square_coords[i][9][1]-square_coords[i][0][1])/9, 2)
-        
+        square_coords[i][j][0] = round(
+            square_coords[i][0][0]+j*(square_coords[i][9][0]-square_coords[i][0][0])/9, 2)
+        square_coords[i][j][1] = round(
+            square_coords[i][0][1]+j*(square_coords[i][9][1]-square_coords[i][0][1])/9, 2)
+
 
 def move_piece(i, j):
     steps = get_steps()
 
-    y0 = ((steps[0]*mm_per_step_0)**2-(steps[1]*mm_per_step_1)**2+height**2)/2/height
+    y0 = ((steps[0]*mm_per_step_0)**2 -
+          (steps[1]*mm_per_step_1)**2+height**2)/2/height
     x0 = math.sqrt((mm_per_step_0*steps[0])**2-y0**2)
 
     x = square_coords[i][j][0]-x0
@@ -135,14 +152,17 @@ def move_piece(i, j):
     y_over = math.copysign(math.sqrt(overshoot**2-x_over**2), y)
     move([square_coords[i][j][0]+x_over, square_coords[i][j][1]+y_over])
 
+
 def move_square(j, i):
     move(square_coords[i][j])
-    
+
+
 def tension():
 	num_steps = 4
 	for i in range(num_steps):
 		for j in range(4):
 			manual(j, -1)
+
 
 def release_tension():
 	num_steps = 4
@@ -150,8 +170,10 @@ def release_tension():
 		for j in range(4):
 			manual(j, 1)
 
+
 def distance(point1, point2):
     return math.sqrt((point1[0]-point2[0])**2+(point1[1]-point2[1])**2)
+
 
 def get_radii(pos):
     return [
@@ -161,10 +183,12 @@ def get_radii(pos):
     round(distance([width, 0], pos)/mm_per_step_3)
     ]
 
+
 def get_position(radii):
     y = (radii[0]**2+height**2-radii[1]**2)/(2*height)
     x = math.sqrt(radii[0]**2-y**2)
     return [x, y]
+
 
 def get_steps():
     step_file = open("steps.txt", "r")
@@ -183,11 +207,13 @@ def get_steps():
 
     return steps
 
+
 def save_steps(steps):
 	step_file = open("steps.txt", "w")
 	for s in steps:
 		step_file.write(str(s)+"\n")
 	step_file.close()
+
 
 def manual(motor, steps):
     if motor == 0:
@@ -200,13 +226,14 @@ def manual(motor, steps):
             time.sleep(.004)
     if motor == 2:
         for i in range(abs(steps)):
-            b_motors.move_step0(abs(steps)/steps)   #was -abs
+            b_motors.move_step0(abs(steps)/steps)  # was -abs
             time.sleep(.004)
     if motor == 3:
         for i in range(abs(steps)):
             b_motors.move_step1(abs(steps)/steps)
             time.sleep(.004)
     save_curr_steps()
+
 
 def off(motor):
     if motor == 0:
@@ -218,6 +245,7 @@ def off(motor):
     if motor == 3:
         b_motors.off1()
 
+
 def on(motor):
     if motor == 0:
         a_motors.on0()
@@ -228,23 +256,25 @@ def on(motor):
     if motor == 3:
         b_motors.on1()
 
+
 def move(coords):
     sleeptime = .001
-	steps = get_steps()
-	final = [
-	round(distance([0, 0], coords)/mm_per_step_0), 
-	round(distance([0, height], coords)/mm_per_step_1), 
-	round(distance([width, height], coords)/mm_per_step_2), 
-	round(distance([width, 0], coords)/mm_per_step_3), 
+    steps = get_steps()
+    final = [
+	round(distance([0, 0], coords)/mm_per_step_0),
+	round(distance([0, height], coords)/mm_per_step_1),
+	round(distance([width, height], coords)/mm_per_step_2),
+	round(distance([width, 0], coords)/mm_per_step_3),
 	]
 
-	y0 = ((steps[0]*mm_per_step_0)**2-(steps[1]*mm_per_step_1)**2+height**2)/2/height
+	y0 = ((steps[0]*mm_per_step_0)**2 -
+	      (steps[1]*mm_per_step_1)**2+height**2)/2/height
 	x0 = math.sqrt((mm_per_step_0*steps[0])**2-y0**2)
 
 	dx = coords[0]-x0
 	dy = coords[1]-y0
 
-	dsteps = [final[i]-steps[i] for i in range(4)]   #change in steps
+	dsteps = [final[i]-steps[i] for i in range(4)]  # change in steps
 
 	most_steps_motor = 0
 	most_steps = 0
@@ -265,7 +295,6 @@ def move(coords):
 	for t in target_coords:
 		target_steps.append(get_radii(t))
 	target_steps.append(final)
-
 
 	for t in target_steps:
 		d0 = t[0]-steps[0]
