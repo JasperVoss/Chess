@@ -49,7 +49,7 @@ while True:
 		move.calibrate()
 
 	elif inputtext == "calibrate squares":
-		move.calibrate_squares()
+		move.calibrate_squares(move.square_coords[6][1])
 
 	elif inputtext == "all":
 		steps = int(input("steps: "))
