@@ -331,4 +331,3 @@ def move(coords):
 	save_steps(steps)
 	save_curr_steps()
 
-calibrate_squares(square_coords[6][1])
