@@ -16,12 +16,17 @@ magnet_off()
 
 squarex = int(input("x: "))
 squarey = int(input("y:"))
+counter = 0
 while True:
 	state = halifax.get_state()
 	for i in range(len(state)):
 		for j in range(len(state[i])):
 			if state[i][j] == 1:
 				if i != squarey or j != squarex:
+					counter += 1
+					if counter >= 2:
+						move.calibrate()
+						counter = 0
 					move.move_square(i, j)
 					magnet_on()
 					move.move_piece(squarey, squarex)
