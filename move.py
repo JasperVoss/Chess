@@ -273,5 +273,5 @@ def move(coords):
 			steps[3] += int(abs(d3)/d3)
 			#time.sleep(.0004)
 
-	save_steps(steps)
+        save_steps(steps)
 	save_curr_steps()
