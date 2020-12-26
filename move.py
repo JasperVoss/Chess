@@ -56,45 +56,6 @@ def save_curr_steps():
         file.write(str(s)+"\n")
     file.close()
 
-def calibrate_squares(coords0):
-    final0 = []
-    final1 = []
-    final2 = []
-    final3 = []
-
-    move(coords0)
-    magnet_on()
-    if halifax.get_square(1, 6) == 1:
-        tick1 = 0
-        tick2 = 0
-        while True:
-            tick1 -= 1
-            move([coords0[0]+tick1, coords0[1]])
-            if halifax.get_square(1, 6) == 0:
-                break
-        while True:
-            tick2 += 1
-            move([coords0[0]+tick2, coords0[1]])
-            if halifax.get_square(1, 6) == 0:
-                break
-        final0.append(coords0[0]+(tick1+tick2)/2)
-
-        while True:
-            tick1 -= 1
-            move([coords0[0], coords0[1]+tick1])
-            if halifax.get_square(1, 6) == 0:
-                break
-        while True:
-            tick2 += 1
-            move([coords0[0], coords0[1]+tick2])
-            if halifax.get_square(1, 6) == 0:
-                break
-        final0.append(coords0[1]+(tick1+tick2)/2)
-
-    magnet_off()
-    print(coords0)
-    print(final0)
-
 def hard_calibrate():
     pass
 
@@ -268,6 +229,7 @@ def on(motor):
         b_motors.on1()
 
 def move(coords):
+    sleeptime = .001
 	steps = get_steps()
 	final = [
 	round(distance([0, 0], coords)/mm_per_step_0), 
@@ -314,19 +276,19 @@ def move(coords):
 		for i in range(abs(d0)):
 			a_motors.move_step0(abs(d0)/d0)
 			steps[0] += int(abs(d0)/d0)
-			#time.sleep(.0004)
+			time.sleep(sleeptime)
 		for i in range(abs(d1)):
 			a_motors.move_step1(abs(d1)/d1)
 			steps[1] += int(abs(d1)/d1)
-			#time.sleep(.0004)
+            time.sleep(sleeptime)
 		for i in range(abs(d2)):
 			b_motors.move_step0(abs(d2)/d2)
 			steps[2] += int(abs(d2)/d2)
-			#time.sleep(.0004)
+            time.sleep(sleeptime)
 		for i in range(abs(d3)):
 			b_motors.move_step1(abs(d3)/d3)
 			steps[3] += int(abs(d3)/d3)
-			#time.sleep(.0004)
+            time.sleep(sleeptime)
 
 	save_steps(steps)
 	save_curr_steps()

@@ -10,9 +10,6 @@ class Motor:
         self.reg = reg
         self.output = [reg, '0', '0', '0', '0', '0', '0', '0', '0']
         out = ''
-        for i in self.output:
-            out = out + i
-        mcp.output(out)
 
         self.curr_step0 = 0
         self.curr_step1 = 0
