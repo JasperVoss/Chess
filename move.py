@@ -1,4 +1,4 @@
-import math, time, motors, halifax
+import math, time, motors, halifax, main
 
 
 def get_board_vars():
@@ -50,6 +50,7 @@ def calibrate_squares(coords0):
     final3 = []
 
     move(coords0)
+    main.magnet_on()
     if halifax.get_state()[1][6] == 1:
         tick1 = 0
         tick2 = 0
@@ -77,6 +78,7 @@ def calibrate_squares(coords0):
                 break
         final0.append(coords0[1]+(tick1+tick2)/2)
 
+    main.magnet_off()
     print(coords0)
     print(final0)
 

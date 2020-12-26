@@ -12,8 +12,3 @@ def magnet_on():
 def magnet_off():
     gpio.output(magnet_pin, 0)
 
-magnet_off()
-
-turn = 0
-while True:
-	state = halifax.get_piece_pos()
