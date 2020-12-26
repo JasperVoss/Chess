@@ -12,6 +12,16 @@ for i in outpins:
 for i in inpins:
     gpio.setup(i, gpio.IN)
 
+def get_square(i, j):
+    for p in outpins:
+        gpio.output(p, 0)
+    gpio.setup(inpins[i], gpio.OUT)
+    gpio.output(inpins[i], 0)
+    time.sleep(.08)
+    gpio.setup(inpins[i], gpio.IN)
+    gpio.output(outpins[j], 1)
+    time.sleep(.08)
+    return gpio.input(inpins[i]) == 1
 
 def get_state():
         

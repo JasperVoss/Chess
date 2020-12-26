@@ -64,30 +64,30 @@ def calibrate_squares(coords0):
 
     move(coords0)
     magnet_on()
-    if halifax.get_state()[1][6] == 1:
+    if halifax.get_square(1, 6) == 1:
         tick1 = 0
         tick2 = 0
         while True:
             tick1 -= 1
             move([coords0[0]+tick1, coords0[1]])
-            if halifax.get_state()[1][6] == 0:
+            if halifax.get_square(1, 6) == 0:
                 break
         while True:
             tick2 += 1
             move([coords0[0]+tick2, coords0[1]])
-            if halifax.get_state()[1][6] == 0:
+            if halifax.get_square(1, 6) == 0:
                 break
         final0.append(coords0[0]+(tick1+tick2)/2)
 
         while True:
             tick1 -= 1
             move([coords0[0], coords0[1]+tick1])
-            if halifax.get_state()[1][6] == 0:
+            if halifax.get_square(1, 6) == 0:
                 break
         while True:
             tick2 += 1
             move([coords0[0], coords0[1]+tick2])
-            if halifax.get_state()[1][6] == 0:
+            if halifax.get_square(1, 6) == 0:
                 break
         final0.append(coords0[1]+(tick1+tick2)/2)
 
