@@ -21,7 +21,7 @@ def get_square(i, j):
     gpio.setup(inpins[i], gpio.IN)
     gpio.output(outpins[j], 1)
     time.sleep(.08)
-    return gpio.input(inpins[i]) == 1
+    return 1-gpio.input(inpins[i])
 
 def get_state():
         
