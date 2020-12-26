@@ -19,21 +19,21 @@ def magnet_off():
 
 
 def get_board_vars():
-	file = open("board_vars.txt", 'r')
-	text = file.read()
-	file.close()
-	var = []
-	curr_string = ""
-	for v in text:
-		if v == "\n":
-			var.append(curr_string)
-			curr_string = ""
-		else:
-			curr_string = curr_string + v
-	for i in range(len(var)):
-		var[i] = float(var[i])
+    file = open("board_vars.txt", 'r')
+    text = file.read()
+    file.close()
+    var = []
+    curr_string = ""
+    for v in text:
+        if v == "\n":
+            var.append(curr_string)
+            curr_string = ""
+        else:
+            curr_string = curr_string + v
+    for i in range(len(var)):
+        var[i] = float(var[i])
 
-	return var
+    return var
 
 
 def get_curr_step():
@@ -87,7 +87,7 @@ def calibrate():
         off(i)
     manual(3, -150)
     for i in range(3):
-    	manual(i, -8)
+        manual(i, -8)
     save_steps(get_radii(final_pos))
     move([500, 100])
 
@@ -158,17 +158,17 @@ def move_square(j, i):
 
 
 def tension():
-	num_steps = 4
-	for i in range(num_steps):
-		for j in range(4):
-			manual(j, -1)
+    num_steps = 4
+    for i in range(num_steps):
+        for j in range(4):
+            manual(j, -1)
 
 
 def release_tension():
-	num_steps = 4
-	for i in range(num_steps):
-		for j in range(4):
-			manual(j, 1)
+    num_steps = 4
+    for i in range(num_steps):
+        for j in range(4):
+            manual(j, 1)
 
 
 def distance(point1, point2):
@@ -209,10 +209,10 @@ def get_steps():
 
 
 def save_steps(steps):
-	step_file = open("steps.txt", "w")
-	for s in steps:
-		step_file.write(str(s)+"\n")
-	step_file.close()
+    step_file = open("steps.txt", "w")
+    for s in steps:
+        step_file.write(str(s)+"\n")
+    step_file.close()
 
 
 def manual(motor, steps):
@@ -261,63 +261,63 @@ def move(coords):
     sleeptime = .001
     steps = get_steps()
     final = [
-	round(distance([0, 0], coords)/mm_per_step_0),
-	round(distance([0, height], coords)/mm_per_step_1),
-	round(distance([width, height], coords)/mm_per_step_2),
-	round(distance([width, 0], coords)/mm_per_step_3),
-	]
+    round(distance([0, 0], coords)/mm_per_step_0),
+    round(distance([0, height], coords)/mm_per_step_1),
+    round(distance([width, height], coords)/mm_per_step_2),
+    round(distance([width, 0], coords)/mm_per_step_3),
+    ]
 
-	y0 = ((steps[0]*mm_per_step_0)**2 - (steps[1]*mm_per_step_1)**2+height**2)/2/height
-	x0 = math.sqrt((mm_per_step_0*steps[0])**2-y0**2)
+    y0 = ((steps[0]*mm_per_step_0)**2 - (steps[1]*mm_per_step_1)**2+height**2)/2/height
+    x0 = math.sqrt((mm_per_step_0*steps[0])**2-y0**2)
 
-	dx = coords[0]-x0
-	dy = coords[1]-y0
+    dx = coords[0]-x0
+    dy = coords[1]-y0
 
-	dsteps = [final[i]-steps[i] for i in range(4)]  # change in steps
+    dsteps = [final[i]-steps[i] for i in range(4)]  # change in steps
 
-	most_steps_motor = 0
-	most_steps = 0
-	for i in range(4):
-		if dsteps[i] > most_steps:
-			most_steps = dsteps[i]
-			most_steps_motor = i
+    most_steps_motor = 0
+    most_steps = 0
+    for i in range(4):
+        if dsteps[i] > most_steps:
+            most_steps = dsteps[i]
+            most_steps_motor = i
 
-	num_targets = most_steps
-	target_coords = []
+    num_targets = most_steps
+    target_coords = []
 
-	for i in range(num_targets):
-		target_coords.append([
-			round(x0+dx*i/num_targets, 2),
-			round(y0+dy*i/num_targets, 2)
-			])
-	target_steps = []
-	for t in target_coords:
-		target_steps.append(get_radii(t))
-	target_steps.append(final)
+    for i in range(num_targets):
+        target_coords.append([
+            round(x0+dx*i/num_targets, 2),
+            round(y0+dy*i/num_targets, 2)
+            ])
+    target_steps = []
+    for t in target_coords:
+        target_steps.append(get_radii(t))
+    target_steps.append(final)
 
-	for t in target_steps:
-		d0 = t[0]-steps[0]
-		d1 = t[1]-steps[1]
-		d2 = t[2]-steps[2]
-		d3 = t[3]-steps[3]
+    for t in target_steps:
+        d0 = t[0]-steps[0]
+        d1 = t[1]-steps[1]
+        d2 = t[2]-steps[2]
+        d3 = t[3]-steps[3]
 
-		for i in range(abs(d0)):
-			a_motors.move_step0(abs(d0)/d0)
-			steps[0] += int(abs(d0)/d0)
-			time.sleep(sleeptime)
-		for i in range(abs(d1)):
-			a_motors.move_step1(abs(d1)/d1)
-			steps[1] += int(abs(d1)/d1)
+        for i in range(abs(d0)):
+            a_motors.move_step0(abs(d0)/d0)
+            steps[0] += int(abs(d0)/d0)
             time.sleep(sleeptime)
-		for i in range(abs(d2)):
-			b_motors.move_step0(abs(d2)/d2)
-			steps[2] += int(abs(d2)/d2)
+        for i in range(abs(d1)):
+            a_motors.move_step1(abs(d1)/d1)
+            steps[1] += int(abs(d1)/d1)
             time.sleep(sleeptime)
-		for i in range(abs(d3)):
-			b_motors.move_step1(abs(d3)/d3)
-			steps[3] += int(abs(d3)/d3)
+        for i in range(abs(d2)):
+            b_motors.move_step0(abs(d2)/d2)
+            steps[2] += int(abs(d2)/d2)
+            time.sleep(sleeptime)
+        for i in range(abs(d3)):
+            b_motors.move_step1(abs(d3)/d3)
+            steps[3] += int(abs(d3)/d3)
             time.sleep(sleeptime)
 
-	save_steps(steps)
-	save_curr_steps()
+    save_steps(steps)
+    save_curr_steps()
 
