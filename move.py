@@ -267,8 +267,7 @@ def move(coords):
 	round(distance([width, 0], coords)/mm_per_step_3),
 	]
 
-	y0 = ((steps[0]*mm_per_step_0)**2 -
-	      (steps[1]*mm_per_step_1)**2+height**2)/2/height
+	y0 = ((steps[0]*mm_per_step_0)**2 - (steps[1]*mm_per_step_1)**2+height**2)/2/height
 	x0 = math.sqrt((mm_per_step_0*steps[0])**2-y0**2)
 
 	dx = coords[0]-x0
