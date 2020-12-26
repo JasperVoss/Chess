@@ -174,7 +174,7 @@ def move_piece(i, j):
     y_over = math.copysign(math.sqrt(overshoot**2-x_over**2), y)
     move([square_coords[i][j][0]+x_over, square_coords[i][j][1]+y_over])
 
-def move_square(i, j):
+def move_square(j, i):
     move(square_coords[i][j])
     
 def tension():

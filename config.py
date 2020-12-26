@@ -39,6 +39,9 @@ while True:
 	elif inputtext == "tension":
 		move.tension()
 
+	elif inputtext == "move square":
+		move.move_square(input("x: "), input("y: "))
+
 	elif inputtext == "release":
 		move.release_tension()
 
