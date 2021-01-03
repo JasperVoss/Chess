@@ -258,7 +258,7 @@ def on(motor):
 
 
 def move(coords):
-    sleeptime = .001
+    sleeptime = .0003
     steps = get_steps()
     final = [
     round(distance([0, 0], coords)/mm_per_step_0),
