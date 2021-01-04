@@ -5,6 +5,7 @@ import halifax
 import RPi.GPIO as gpio
 
 magnet_pin = 4
+sleeptime = 0
 
 gpio.setmode(gpio.BCM)
 gpio.setup(magnet_pin, gpio.OUT)
@@ -258,7 +259,6 @@ def on(motor):
 
 
 def move(coords):
-    sleeptime = .0003
     steps = get_steps()
     final = [
     round(distance([0, 0], coords)/mm_per_step_0),
