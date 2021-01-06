@@ -158,8 +158,8 @@ def move_piece(j, i):
             xfinal = (square_coords[int(i-.5)][int(j+.5)][0]+square_coords[int(i-.5)][int(j-.5)][0])/2
             y = (square_coords[int(i+.5)][int(j-.5)][1]+square_coords[int(i-.5)][int(j-.5)][1])/2
 
-    dx = x-x0
-    dy = y-y0
+    dx = xfinal-x0
+    dy = yfinal-y0
 
     if dx != 0:
         x_over = math.copysign(math.sqrt(overshoot**2/((dy**2)/(dx**2)+1)), dx)
