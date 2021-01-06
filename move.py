@@ -155,7 +155,13 @@ def move_piece(j, i):
 
 
 def move_square(j, i):
-    move(square_coords[i][j])
+    if i%1 == 0:
+        if j%1 == 0:
+            move(square_coords[i][j])
+        else:
+            move([square_coords[i][j][0], (square_coords[i][int(j+.5)][1]-square_coords[i][int(j-.5)][1])/2])
+    
+
 
 
 def tension():
