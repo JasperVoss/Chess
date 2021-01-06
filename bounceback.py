@@ -32,26 +32,27 @@ magnet_off()
 # 						move.calibrate()
 # 						counter = 0
 
-original_state = halifax.get_state()
-while True:
+def bounceback()
+	original_state = halifax.get_state()
 	while True:
-		difference = [[0 for _ in range(8)] for _ in range(10)]
-		new_state = halifax.get_state()
-		for i in range(len(original_state)):
-			for j in range(8):
-				difference[i][j] = new_state[i][j]-original_state[i][j]
-		movedto = [-1, -1]
-		movedfrom = [-1, -1]
-		for i in range(len(original_state)):
-			for j in range(8):
-				if difference[i][j] == 1:
-					movedto[0], movedto[1] = i, j
-				elif difference[i][j] == -1:
-					movedfrom[0], movedfrom[1] = i, j
-		if movedto[0] != -1 and movedfrom[0] != -1:
-			break
-	move.move_square(movedto[0], movedto[1])
-	time.sleep(.1)
-	magnet_on()
-	move.move_piece(movedfrom[0], movedfrom[1])
-	magnet_off()
+		while True:
+			difference = [[0 for _ in range(8)] for _ in range(10)]
+			new_state = halifax.get_state()
+			for i in range(len(original_state)):
+				for j in range(8):
+					difference[i][j] = new_state[i][j]-original_state[i][j]
+			movedto = [-1, -1]
+			movedfrom = [-1, -1]
+			for i in range(len(original_state)):
+				for j in range(8):
+					if difference[i][j] == 1:
+						movedto[0], movedto[1] = i, j
+					elif difference[i][j] == -1:
+						movedfrom[0], movedfrom[1] = i, j
+			if movedto[0] != -1 and movedfrom[0] != -1:
+				break
+		move.move_square(movedto[0], movedto[1])
+		time.sleep(.1)
+		magnet_on()
+		move.move_piece(movedfrom[0], movedfrom[1])
+		magnet_off()

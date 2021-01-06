@@ -1,5 +1,5 @@
 import RPi.GPIO as gpio
-import move, time, halifax
+import move, time, halifax, bounceback
 from random import randint
 magnet_pin = 4
 
@@ -12,3 +12,6 @@ def magnet_on():
 def magnet_off():
     gpio.output(magnet_pin, 0)
 
+
+move_square(0, 7)
+magnet_on()
