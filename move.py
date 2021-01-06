@@ -145,18 +145,18 @@ def move_piece(j, i):
 
     if i%1 == 0:
         if j%1 == 0:
-            x = square_coords[i][j][0]
-            y = square_coords[i][j][1]
+            xfinal = square_coords[i][j][0]
+            yfinal = square_coords[i][j][1]
         else:
-            x = (square_coords[i][int(j+.5)][0]+square_coords[i][int(j-.5)][0])/2
-            y = square_coords[i][int(j-.5)][1]
+            xfinal = (square_coords[i][int(j+.5)][0]+square_coords[i][int(j-.5)][0])/2
+            yfinal = square_coords[i][int(j-.5)][1]
     else:
         if j%1 == 0:
-            x = square_coords[int(i-.5)][j][0]
-            y = (square_coords[int(i+.5)][j][1]+square_coords[int(i-.5)][j][1])/2
+            xfinal = square_coords[int(i-.5)][j][0]
+            yfinal = (square_coords[int(i+.5)][j][1]+square_coords[int(i-.5)][j][1])/2
         else:
             xfinal = (square_coords[int(i-.5)][int(j+.5)][0]+square_coords[int(i-.5)][int(j-.5)][0])/2
-            y = (square_coords[int(i+.5)][int(j-.5)][1]+square_coords[int(i-.5)][int(j-.5)][1])/2
+            yfinal = (square_coords[int(i+.5)][int(j-.5)][1]+square_coords[int(i-.5)][int(j-.5)][1])/2
 
     dx = xfinal-x0
     dy = yfinal-y0
