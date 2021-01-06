@@ -38,12 +38,12 @@ while True:
 		difference = [[0 for _ in range(8)] for _ in range(10)]
 		new_state = halifax.get_state()
 		for i in range(len(original_state)):
-			for j in range(len(i)):
+			for j in range(8):
 				difference[i][j] = new_state[i][j]-original_state[i][j]
 		movedto = [-1, -1]
 		movedfrom = [-1, -1]
 		for i in range(len(original_state)):
-			for j in range(len(i)):
+			for j in range(8):
 				if difference[i][j] == 1:
 					movedto[0], movedto[1] = i, j
 				elif difference[i][j] == -1:
