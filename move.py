@@ -151,7 +151,7 @@ def move_piece(j, i):
     else:
         x_over = 0
     y_over = math.copysign(math.sqrt(overshoot**2-x_over**2), y)
-    move([square_coords[i][j][0]+x_over, square_coords[i][j][1]+y_over])
+    move([square_coords[i][int(j-.5)][0]+x_over, square_coords[i][j][1]+y_over])
 
 
 def move_square(j, i):
@@ -160,7 +160,7 @@ def move_square(j, i):
             move(square_coords[i][j])
         else:
             move([square_coords[i][j][0], (square_coords[i][int(j+.5)][1]-square_coords[i][int(j-.5)][1])/2])
-    
+
 
 
 
