@@ -143,8 +143,23 @@ def move_piece(j, i):
           (steps[1]*mm_per_step_1)**2+height**2)/2/height
     x0 = math.sqrt((mm_per_step_0*steps[0])**2-y0**2)
 
-    x = square_coords[i][j][0]-x0
-    y = square_coords[i][j][1]-y0
+    if i%1 == 0:
+        if j%1 == 0:
+            x = square_coords[i][j][0]
+            y = square_coords[i][j][1]
+        else:
+            x = (square_coords[i][int(j+.5)][0]+square_coords[i][int(j-.5)][0])/2
+            y = square_coords[i][int(j-.5)][1]
+    else:
+        if j%1 == 0:
+            x = square_coords[int(i-.5)][j][0]
+            y = (square_coords[int(i+.5)][j][1]+square_coords[int(i-.5)][j][1])/2
+        else:
+            x = (square_coords[int(i-.5)][int(j+.5)][0]+square_coords[int(i-.5)][int(j-.5)][0])/2
+            y = (square_coords[int(i+.5)][int(j-.5)][1]+square_coords[int(i-.5)][int(j-.5)][1])/2
+
+    x = x-x0
+    y = y-y0
 
     if x != 0:
         x_over = math.copysign(math.sqrt(overshoot**2/((y**2)/(x**2)+1)), x)
