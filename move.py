@@ -5,7 +5,7 @@ import halifax
 import RPi.GPIO as gpio
 
 magnet_pin = 4
-sleeptime = 0.0003
+sleeptime = 0.0001
 
 gpio.setmode(gpio.BCM)
 gpio.setup(magnet_pin, gpio.OUT)
