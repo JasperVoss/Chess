@@ -160,6 +160,11 @@ def move_square(j, i):
             move(square_coords[i][j])
         else:
             move([(square_coords[i][int(j+.5)][0]+square_coords[i][int(j-.5)][0])/2, square_coords[i][int(j-.5)][1]])
+    else:
+        if j%1 == 0:
+            move([square_coords[int(i-.5)][j][0], (square_coords[int(i+.5)][j][1]+square_coords[int(i-.5)][j][1])/2])
+        else:
+            move([(square_coords[int(i-.5)][int(j+.5)][0]+square_coords[int(i-.5)][int(j-.5)][0])/2, (square_coords[int(i+.5)][int(j-.5)][1]+square_coords[int(i-.5)][int(j-.5)][1])/2])
 
 
 
