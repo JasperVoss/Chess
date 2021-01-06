@@ -12,9 +12,13 @@ def magnet_on():
 def magnet_off():
     gpio.output(magnet_pin, 0)
 
+magnet_off()
+move.move_square(7, 0)
 magnet_on()
-move.move_square(7.5, 0)
-time.sleep(1)
-move.move_square(0, 1.5)
-time.sleep(1)
-move.move_square(.5, .5)
+time.sleep(.1)
+move.move_square(6.5, .5)
+time.sleep(.1)
+move.move_square(6.5, 1.5)
+time.sleep(.1)
+move.move_square(6, 2)
+magnet_off()
