@@ -159,7 +159,7 @@ def move_square(j, i):
         if j%1 == 0:
             move(square_coords[i][j])
         else:
-            move([(square_coords[i][int(j+.5)][1]-square_coords[i][int(j-.5)][1])/2, square_coords[i][int(j-.5)][0]])
+            move([(square_coords[i][int(j+.5)][1]+square_coords[i][int(j-.5)][1])/2, square_coords[i][int(j-.5)][0]])
 
 
 
