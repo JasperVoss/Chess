@@ -14,3 +14,7 @@ def magnet_off():
 
 magnet_on()
 move.move_square(7.5, 0)
+time.sleep(1)
+move.move_square(0, 1.5)
+time.sleep(1)
+move.move_square(.5, .5)
