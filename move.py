@@ -155,18 +155,18 @@ def move_piece(j, i):
             x = square_coords[int(i-.5)][j][0]
             y = (square_coords[int(i+.5)][j][1]+square_coords[int(i-.5)][j][1])/2
         else:
-            x = (square_coords[int(i-.5)][int(j+.5)][0]+square_coords[int(i-.5)][int(j-.5)][0])/2
+            xfinal = (square_coords[int(i-.5)][int(j+.5)][0]+square_coords[int(i-.5)][int(j-.5)][0])/2
             y = (square_coords[int(i+.5)][int(j-.5)][1]+square_coords[int(i-.5)][int(j-.5)][1])/2
 
-    x = x-x0
-    y = y-y0
+    dx = x-x0
+    dy = y-y0
 
-    if x != 0:
-        x_over = math.copysign(math.sqrt(overshoot**2/((y**2)/(x**2)+1)), x)
+    if dx != 0:
+        x_over = math.copysign(math.sqrt(overshoot**2/((dy**2)/(dx**2)+1)), dx)
     else:
         x_over = 0
-    y_over = math.copysign(math.sqrt(overshoot**2-x_over**2), y)
-    move([square_coords[i][j][0]+x_over, square_coords[i][j][1]+y_over])
+    y_over = math.copysign(math.sqrt(overshoot**2-x_over**2), dy)
+    move([xfinal+x_over, yfinal+y_over])
 
 
 def move_square(j, i):
