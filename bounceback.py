@@ -53,5 +53,5 @@ while True:
 	move.move_square(movedto[0], movedto[1])
 	time.sleep(.1)
 	magnet_on()
-	move.move_square(movedfrom[0], movedfrom[1])
+	move.move_piece(movedfrom[0], movedfrom[1])
 	magnet_off()
