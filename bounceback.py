@@ -32,7 +32,7 @@ magnet_off()
 # 						move.calibrate()
 # 						counter = 0
 
-def bounceback()
+def bounceback():
 	original_state = halifax.get_state()
 	while True:
 		while True:
