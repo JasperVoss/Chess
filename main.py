@@ -18,7 +18,7 @@ move.move([100, 100])
 time.sleep(.5)
 move.move([100, 390])
 time.sleep(.5)
-move.move([516, 100])
+move.move([500, 100])
 
 # magnet_off()
 # move.move_square(7, 0)
