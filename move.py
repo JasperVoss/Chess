@@ -136,7 +136,7 @@ for i in range(len(square_coords)):
             square_coords[i][0][1]+j*(square_coords[i][9][1]-square_coords[i][0][1])/9, 2)
 
 
-def move_piece(j, i):
+def move_piece(i, j):
     steps = get_steps()
 
     y0 = ((steps[0]*mm_per_step_0)**2 -
@@ -169,7 +169,7 @@ def move_piece(j, i):
     move([xfinal+x_over, yfinal+y_over])
 
 
-def move_square(j, i):
+def move_square(i, j):
     if i%1 == 0:
         if j%1 == 0:
             move(square_coords[i][j])
